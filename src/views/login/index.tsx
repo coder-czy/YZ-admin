@@ -1,20 +1,30 @@
-import { Form, Button, Input } from 'antd'
+import { Form, Button, Input, theme } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import './index.less'
 // import SvgIcon from '@/components/svgIcon'
 import LoginBg from './component/bg'
 type Props = {}
+const { useToken } = theme
 
 function Login({}: Props) {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values)
   }
+  const { token } = useToken()
+  console.log(token.colorPrimary)
 
   return (
     <div className="login flx-center">
       <LoginBg></LoginBg>
 
-      <div className="filter shadow card login-stage">
+      <div
+        className="filter shadow card login-stage"
+        style={{
+          // backgroundColor: `${token.colorPrimary}23`,
+          boxShadow: `0 0 20px ${token.colorPrimary}`,
+          border: token.colorPrimary,
+        }}>
+        <h2 className="title">YZ ADMIN</h2>
         <Form
           name="normal_login"
           className="login-form"
