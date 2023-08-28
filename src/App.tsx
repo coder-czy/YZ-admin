@@ -1,9 +1,9 @@
 import { HashRouter } from 'react-router-dom'
-import Login from '@/views/login'
+import Router from '@/routers'
 function App() {
   return (
     <HashRouter>
-      <Login></Login>
+      <Router />
     </HashRouter>
   )
 }

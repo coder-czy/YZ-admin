@@ -1,17 +1,20 @@
 import { Form, Button, Input, theme } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+
 import './index.less'
-// import SvgIcon from '@/components/svgIcon'
 import LoginBg from './component/bg'
+
 type Props = {}
 const { useToken } = theme
 
 function Login({}: Props) {
+  const navigate = useNavigate()
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values)
+    navigate('home', { replace: true })
   }
   const { token } = useToken()
-  console.log(token.colorPrimary)
 
   return (
     <div className="login flx-center">
