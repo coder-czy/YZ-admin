@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -8,9 +9,12 @@ import {
 } from '@ant-design/icons'
 import { Layout, Menu, Button, theme } from 'antd'
 
+import logo from '@/assets/react.svg'
+import './index.less'
+
 const { Header, Sider, Content } = Layout
 
-const App: React.FC = () => {
+const Layouts: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer },
@@ -20,6 +24,10 @@ const App: React.FC = () => {
     <Layout style={{ height: '100%' }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
+        <div className="logo">
+          <img src={logo} alt="logo" />
+          <h2>YZ ADMIN</h2>
+        </div>
         <Menu
           theme="dark"
           mode="inline"
@@ -63,11 +71,11 @@ const App: React.FC = () => {
             minHeight: 280,
             background: colorBgContainer,
           }}>
-          Content
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
   )
 }
 
-export default App
+export default Layouts
