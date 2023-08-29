@@ -2,6 +2,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import reduxPromise from 'redux-promise'
+import {
+  TypedUseSelectorHook,
+  useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
+} from 'react-redux'
 
 import reduxThunk from 'redux-thunk'
 import global from './module/global'
@@ -27,4 +32,9 @@ export const store = configureStore({
   devTools: true,
 })
 
-export const persistSt = persistStore(store)
+export const persistor = persistStore(store)
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
+export const useDispatch = () => useReduxDispatch<AppDispatch>()

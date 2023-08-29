@@ -6,28 +6,36 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  SkinOutlined,
 } from '@ant-design/icons'
-import { Layout, Menu, Button, theme } from 'antd'
+import { Layout, Menu, Button, theme, Tooltip } from 'antd'
 
-import logo from '@/assets/react.svg'
+import logo from '@/assets/logo.svg'
 import './index.less'
+import ThemeComp from './components/theme'
 
 const { Header, Sider, Content } = Layout
 
 const Layouts: React.FC = () => {
+  // 侧边栏
   const [collapsed, setCollapsed] = useState(false)
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken()
+  // 主题弹窗
+  const [open, setOpen] = useState(false)
+  const close = () => {
+    setOpen(false)
+  }
 
   return (
-    <Layout style={{ height: '100%' }}>
+    <Layout className="layout">
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
+        {/* logo */}
         <div className="logo">
           <img src={logo} alt="logo" />
           {collapsed ? null : <h2>YZ ADMIN</h2>}
         </div>
+
+        {/* 菜单 */}
         <Menu
           theme="dark"
           mode="inline"
@@ -52,7 +60,8 @@ const Layouts: React.FC = () => {
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
+        {/* 头部 */}
+        <Header className="header flx-justify-between">
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -63,17 +72,18 @@ const Layouts: React.FC = () => {
               height: 64,
             }}
           />
+          <div className="func-box flx-center">
+            <Tooltip placement="bottom" title="主题配置">
+              <SkinOutlined className="icon" onClick={() => setOpen(true)} />
+            </Tooltip>
+          </div>
         </Header>
-        <Content
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}>
+        <Content>
           <Outlet />
         </Content>
       </Layout>
+
+      <ThemeComp open={open} close={close}></ThemeComp>
     </Layout>
   )
 }
