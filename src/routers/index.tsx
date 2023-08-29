@@ -14,7 +14,7 @@ const moduleRoute = import.meta.glob('./modules/*', {
 const routeArray: RouteObject[] = []
 Object.keys(moduleRoute).forEach((item) => {
   Object.keys(moduleRoute[item]).forEach((key: any) => {
-    console.log(moduleRoute[item][key])
+    // console.log(moduleRoute[item][key])
 
     routeArray.push(...moduleRoute[item][key])
   })

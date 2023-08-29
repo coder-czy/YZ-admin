@@ -13,5 +13,4 @@ export interface RouteObject {
   path?: string
   isLink?: boolean
   index?: boolean
-  lazy?: any
 }

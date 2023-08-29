@@ -26,7 +26,7 @@ const Layouts: React.FC = () => {
         <div className="demo-logo-vertical" />
         <div className="logo">
           <img src={logo} alt="logo" />
-          <h2>YZ ADMIN</h2>
+          {collapsed ? null : <h2>YZ ADMIN</h2>}
         </div>
         <Menu
           theme="dark"
