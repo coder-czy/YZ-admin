@@ -8,7 +8,8 @@ import {
   VideoCameraOutlined,
   SkinOutlined,
 } from '@ant-design/icons'
-import { Layout, Menu, Button, theme, Tooltip } from 'antd'
+import { Layout, Menu, Button, Tooltip, Avatar, theme, Dropdown } from 'antd'
+import type { MenuProps } from 'antd'
 
 import logo from '@/assets/logo.svg'
 import './index.less'
@@ -17,6 +18,29 @@ import ThemeComp from './components/theme'
 const { Header, Sider, Content } = Layout
 
 const Layouts: React.FC = () => {
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: <span>首页</span>,
+    },
+    {
+      key: '2',
+      label: <span>个人信息</span>,
+    },
+    {
+      key: '3',
+      label: <span>修改密码</span>,
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '4',
+      label: <span>退出登录</span>,
+    },
+  ]
+  const { token } = theme.useToken()
+
   // 侧边栏
   const [collapsed, setCollapsed] = useState(false)
   // 主题弹窗
@@ -76,6 +100,18 @@ const Layouts: React.FC = () => {
             <Tooltip placement="bottom" title="主题配置">
               <SkinOutlined className="icon" onClick={() => setOpen(true)} />
             </Tooltip>
+            <p className="username baseColor ellipsis">Yangzi</p>
+            <Dropdown
+              menu={{ items }}
+              trigger={['click']}
+              placement="bottom"
+              arrow>
+              <Avatar
+                className="icon"
+                style={{ backgroundColor: token.colorPrimary }}
+                icon={<UserOutlined />}
+              />
+            </Dropdown>
           </div>
         </Header>
         <Content>

@@ -1,6 +1,11 @@
 import React, { Suspense } from 'react'
 import { Spin } from 'antd'
 
+/**
+ * @description 加载组件是添加loading
+ * @param Component 组件
+ * @returns
+ */
 const lazyLoad = (
   Component: React.LazyExoticComponent<any>
 ): React.ReactNode => {

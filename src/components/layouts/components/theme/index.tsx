@@ -43,7 +43,7 @@ const ThemeComp = (props: props) => {
         onClose={onClose}
         open={open}>
         <div className="flx-justify-between">
-          <p>主题颜色：</p>
+          <p className="baseColor">主题颜色：</p>
           <ColorPicker
             format={formatHex}
             showText
@@ -53,8 +53,11 @@ const ThemeComp = (props: props) => {
           />
         </div>
         <div className="flx-justify-between" style={{ marginTop: '20px' }}>
-          <p>重置主题：</p>
-          <Button type="primary" onClick={resetTheme}>
+          <p className="baseColor">重置主题：</p>
+          <Button
+            type="primary"
+            style={{ backgroundColor: '#a855f7' }}
+            onClick={resetTheme}>
             重置
           </Button>
         </div>

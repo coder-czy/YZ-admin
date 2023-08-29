@@ -3,6 +3,15 @@ type Props = {
   iconStyle?: { [key: string]: any }
 }
 
+/**
+ *
+ * @param param
+ * {
+ * name svg文件名称
+ * iconStyle 样式
+ * }
+ * @returns
+ */
 function SvgIcon({
   name,
   iconStyle = { width: '100px', height: '100px' },
