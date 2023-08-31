@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh">
 
 <head>
   <meta charset="UTF-8" />
@@ -32,6 +32,57 @@
         align-items: center;
       }
 
+      @keyframes headAnim {
+        0% {
+          top: 0px;
+        }
+
+        50% {
+          top: 10px;
+        }
+
+        100% {
+          top: 0px;
+        }
+      }
+
+      @keyframes bodyAnim {
+        0% {
+          top: -5px;
+        }
+
+        50% {
+          top: 10px;
+        }
+
+        100% {
+          top: -5px;
+        }
+      }
+
+
+      @keyframes fontAnim {
+        0% {
+          width: 7ch;
+        }
+
+        25% {
+          width: 8ch;
+        }
+
+        50% {
+          width: 9ch;
+        }
+
+        75% {
+          width: 10ch;
+        }
+
+        100% {
+          width: 11ch;
+        }
+      }
+
       .eye {
         width: 20px;
         height: 8px;
@@ -44,7 +95,7 @@
       }
 
       .head {
-        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         position: relative;
         margin: -250px auto;
         width: 80px;
@@ -52,8 +103,8 @@
         background-color: #111;
         border-radius: 50px;
         box-shadow: inset -4px 2px 0px 0px rgba(240, 220, 220, 1);
-        -webkit-animation: headAnim 1.5s infinite alternate;
-        -webkit-animation-timing-function: ease-out;
+        animation: headAnim 1.5s infinite alternate;
+        animation-timing-function: ease-out;
       }
 
       .body {
@@ -64,40 +115,12 @@
         background-color: #111;
         border-radius: 50px/25px;
         box-shadow: inset -5px 2px 0px 0px rgba(240, 220, 220, 1);
-        -webkit-animation: bodyAnim 1.5s infinite alternate;
-        -webkit-animation-timing-function: ease-out;
-      }
-
-      @-webkit-keyframes headAnim {
-        0% {
-          top: 0px;
-        }
-
-        50% {
-          top: 10px;
-        }
-
-        100% {
-          top: 0px;
-        }
-      }
-
-      @-webkit-keyframes bodyAnim {
-        0% {
-          top: -5px;
-        }
-
-        50% {
-          top: 10px;
-        }
-
-        100% {
-          top: -5px;
-        }
+        animation: bodyAnim 1.5s infinite alternate;
+        animation-timing-function: ease-out;
       }
 
       .circ {
-        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         /* margin: 60px auto; */
         width: 180px;
         height: 180px;
@@ -111,7 +134,7 @@
       }
 
       .hands {
-        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         margin-top: 140px;
         width: 120px;
         height: 120px;
@@ -119,12 +142,12 @@
         background-color: #111;
         border-radius: 20px;
         box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1);
-        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
         top: 75%;
         left: 16%;
         z-index: 1;
-        -webkit-animation: bodyAnim 1.5s infinite alternate;
-        -webkit-animation-timing-function: ease-out;
+        animation: bodyAnim 1.5s infinite alternate;
+        animation-timing-function: ease-out;
       }
 
       .load {
@@ -141,41 +164,11 @@
         color: rgba(240, 220, 220, 1);
         left: 2%;
         top: 5%;
-        -webkit-animation: fontAnim 3.75s infinite;
-        -webkit-animation-timing-function: ease-out;
+        animation: fontAnim 0.75s infinite;
+        animation-timing-function: ease-out;
         word-wrap: break-word;
         display: block;
         overflow: hidden;
-      }
-
-      @-webkit-keyframes fontAnim {
-        0% {
-          width: 7ch;
-        }
-
-        16% {
-          width: 8ch;
-        }
-
-        32% {
-          width: 9ch;
-        }
-
-        48% {
-          width: 10ch;
-        }
-
-        64% {
-          width: 11ch;
-        }
-
-        80% {
-          width: 12ch;
-        }
-
-        100% {
-          width: 13ch;
-        }
       }
     </style>
     <div class="circ">

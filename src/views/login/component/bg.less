@@ -1,154 +1,122 @@
 .svg-box {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background: radial-gradient(center, ellipse cover, #ffffff 0%, #f2efd9 100%);
-  transform: scale(150%);
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+	background: radial-gradient(center, ellipse farthest-corner, #ffffff 0%, #f2efd9 100%);
+	transform: scale(150%);
 }
-
-#Layer_1 {
-  height: 100%;
-  width: 100%;
+#layer {
+	width: 100%;
+	height: 100%;
 }
 
 @keyframes rotate-right {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes rotate-left {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
 }
 
 @keyframes hover {
-  0% {
-    transform: translateY(0%);
-  }
-  50% {
-    transform: translateY(5%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
+	0% {
+		transform: translateY(0%);
+	}
+	50% {
+		transform: translateY(5%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
 }
 
 @keyframes pull {
-  0% {
-    transform: scaleY(1);
-  }
-  40% {
-    transform: scaleY(1.01);
-  }
-  60% {
-    transform: scaleY(0.99);
-  }
-  80% {
-    transform: scaleY(1.01);
-  }
-  100% {
-    transform: scaleY(0.99);
-  }
-  80% {
-    transform: scaleY(1.01);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+	0% {
+		transform: scaleY(1);
+	}
+	40% {
+		transform: scaleY(1.01);
+	}
+	60% {
+		transform: scaleY(0.99);
+	}
+	80% {
+		transform: scaleY(1.01);
+	}
+	100% {
+		transform: scaleY(1);
+	}
 }
-
 #airplane2,
 #airplane1 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 60s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-right 60s linear 0s infinite;
 }
-
-#countryObjects {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 240s linear 0s infinite;
+#country-objects {
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-right 240s linear 0s infinite;
 }
-
-#floatingGlobe {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-left 360s linear 0s infinite;
+#floating-globe {
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-left 360s linear 0s infinite;
 }
-
 #globe {
-  transform: translate3d(0, 0, 0);
-  animation: hover 0s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	animation: hover 0s linear 0s infinite;
 }
-
 #windmill {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 331px 201px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 2s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 331px 201px;
+	animation: rotate-right 2s linear 0s infinite;
 }
-
 #cloud1 {
-  transform: translate3d(0, 0, 0);
-  animation: hover 3s linear 1s infinite;
+	transform: translate3d(0, 0, 0);
+	animation: hover 3s linear 1s infinite;
 }
-
 #cloud2 {
-  transform: translate3d(0, 0, 0);
-  animation: hover 3s linear 2s infinite;
+	transform: translate3d(0, 0, 0);
+	animation: hover 3s linear 2s infinite;
 }
-
 #cloud3 {
-  transform: translate3d(0, 0, 0);
-  animation: hover 3s linear 3s infinite;
+	transform: translate3d(0, 0, 0);
+	animation: hover 3s linear 3s infinite;
 }
-
 #circle1 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 12s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-right 12s linear 0s infinite;
 }
-
 #circle2 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-left 24s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-left 24s linear 0s infinite;
 }
-
 #circle3 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 12s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-right 12s linear 0s infinite;
 }
-
 #circle4 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-left 24s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-left 24s linear 0s infinite;
 }
-
 #circle5 {
-  transform: translate3d(0, 0, 0);
-  transform-origin: 200px 200px;
-  transform: translate3d(0, 0, 0);
-  animation: rotate-right 12s linear 0s infinite;
+	transform: translate3d(0, 0, 0);
+	transform-origin: 200px 200px;
+	animation: rotate-right 12s linear 0s infinite;
 }

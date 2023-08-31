@@ -1,7 +1,7 @@
-import ErrPage from './index'
+import ErrPage from "./index";
 
 function Page500() {
-  return <ErrPage name="500" title="Sorry, something went wrong." />
+	return <ErrPage name="500" title="Sorry, something went wrong." />;
 }
 
-export default Page500
+export default Page500;
