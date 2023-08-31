@@ -19,12 +19,13 @@ const persistConfig = {
 
 // persist reducer
 const persistReducerConfig = persistReducer(persistConfig, reducer);
+const middlewares = [reduxThunk, reduxPromise];
 
 // 创建store
 export const store = configureStore({
 	reducer: persistReducerConfig,
 	// 中间件
-	middleware: [reduxThunk, reduxPromise],
+	middleware: middlewares,
 	devTools: true
 });
 
