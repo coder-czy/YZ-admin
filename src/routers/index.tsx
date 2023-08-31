@@ -23,7 +23,7 @@ Object.keys(moduleRoute).forEach(item => {
 
 export const rootRouter: RouteObject[] = [
 	{
-		path: "/",
+		path: "/login",
 		element: <Login />,
 		id: "login",
 		meta: {

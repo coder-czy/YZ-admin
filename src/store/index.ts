@@ -6,10 +6,12 @@ import { TypedUseSelectorHook, useDispatch as useReduxDispatch, useSelector as u
 
 import reduxThunk from "redux-thunk";
 import global from "./module/global";
+import sidebar from "./module/sidebar";
 
 // 整合reducer
 const reducer = combineReducers({
-	global
+	global,
+	sidebar
 });
 
 const persistConfig = {
