@@ -4,7 +4,7 @@ import { ExpandOutlined, CompressOutlined } from "@ant-design/icons";
 import { message } from "antd";
 
 function FullScreen() {
-	const [isFull, setIsFull] = useState(false);
+	const [isFull, setIsFull] = useState(true);
 	const FullScreenFn = () => {
 		if (!screenfull.isEnabled) message.error("抱歉！您的浏览器不支持全屏！");
 		screenfull.toggle();

@@ -35,8 +35,8 @@ export const rootRouter: RouteObject[] = [
 	...routeArray,
 	{
 		path: "*",
-		element: lazyLoad(React.lazy(() => import("@/views/errPage/400"))),
-		id: "400"
+		element: lazyLoad(React.lazy(() => import("@/views/errPage/404"))),
+		id: "404"
 	}
 ];
 

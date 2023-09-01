@@ -1,7 +1,7 @@
 import { HashRouter } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import Router from "@/routers";
 
+import Router from "@/routers";
 import { RootState, useSelector } from "@/store";
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
 
 	return (
 		<HashRouter>
+			{/* 组件库配置 */}
 			<ConfigProvider
 				componentSize={componentSize}
 				theme={{

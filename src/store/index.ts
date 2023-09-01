@@ -3,8 +3,8 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import reduxPromise from "redux-promise";
 import { TypedUseSelectorHook, useDispatch as useReduxDispatch, useSelector as useReduxSelector } from "react-redux";
-
 import reduxThunk from "redux-thunk";
+
 import global from "./module/global";
 import sidebar from "./module/sidebar";
 

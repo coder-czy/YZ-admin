@@ -36,11 +36,11 @@ const ThemeComp = (props: props) => {
 		<>
 			<Drawer title="主题配置🎨" placement="right" onClose={onClose} open={open}>
 				<div className="flx-justify-between">
-					<p className="baseColor">主题颜色：</p>
+					<p className="base-color">主题颜色：</p>
 					<ColorPicker format={formatHex} showText value={themeVal} onFormatChange={setFormatHex} onChange={setColorHex} />
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="baseColor">重置主题：</p>
+					<p className="base-color">重置主题：</p>
 					<Button type="primary" style={{ backgroundColor: "#a855f7" }} onClick={resetTheme}>
 						重置
 					</Button>

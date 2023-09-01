@@ -110,7 +110,7 @@ function Head() {
 					/>
 				</Tooltip>
 				{/* 个人信息 */}
-				<p className="username baseColor ellipsis">Yangzi</p>
+				<p className="username base-color ellipsis">Yangzi</p>
 				<Dropdown menu={{ items }} trigger={["hover"]} placement="bottom" arrow>
 					<Avatar className="icon" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
 				</Dropdown>
