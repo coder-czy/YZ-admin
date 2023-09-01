@@ -7,6 +7,7 @@ export interface globalType {
 		[key: string]: any;
 	};
 	componentSize: SizeType;
+	language: "zh" | "en";
 }
 export interface sidebarType {
 	isCollapsed: boolean;

@@ -6,9 +6,10 @@ import { MenuUnfoldOutlined, SkinOutlined, MenuFoldOutlined, UserOutlined, FontS
 
 import { useDispatch, useSelector } from "@/store";
 import { updateCollapsed } from "@/store/module/sidebar";
-import { setComponentSize } from "@/store/module/global";
+import { setComponentSize, setLanguage } from "@/store/module/global";
 import ThemeComp from "../Theme";
 import FullScreen from "../FullScreen";
+import SvgIcon from "@/components/svgIcon";
 
 const { Header } = Layout;
 
@@ -64,6 +65,23 @@ function Head() {
 			}
 		}
 	];
+	// 国际化切换
+	const languageItems: MenuProps["items"] = [
+		{
+			key: "zh",
+			label: <span>中文</span>,
+			onClick: () => {
+				dispatch(setLanguage("zh"));
+			}
+		},
+		{
+			key: "en",
+			label: <span>英文</span>,
+			onClick: () => {
+				dispatch(setLanguage("en"));
+			}
+		}
+	];
 
 	// 主题弹窗
 	const [open, setOpen] = useState(false);
@@ -94,12 +112,23 @@ function Head() {
 				{/* <Tooltip placement="bottom" title="全屏"> */}
 				<FullScreen />
 				{/* </Tooltip> */}
+
+				{/* 国际化配置 */}
+				<Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottom" arrow>
+					{/* <Tooltip placement="left" title="国际化配置"> */}
+					<div className="flx-center">
+						<SvgIcon name="language" iconStyle={{ height: "22px", width: "22px", marginRight: "15px", cursor: "pointer" }} />
+					</div>
+					{/* </Tooltip> */}
+				</Dropdown>
+
 				{/* 组件大小 */}
-				<Dropdown transitionName="" menu={{ items: compItems }} trigger={["hover"]} placement="bottom" arrow>
-					{/* <Tooltip placement="left" title="组件大小配置"> */}
+				<Dropdown menu={{ items: compItems }} trigger={["hover"]} placement="bottom" arrow>
+					{/* <Tooltip placement="left" title="组件尺寸配置"> */}
 					<FontSizeOutlined className="icon" />
 					{/* </Tooltip> */}
 				</Dropdown>
+
 				{/* 主题配置 */}
 				<Tooltip placement="bottom" title="主题配置">
 					<SkinOutlined

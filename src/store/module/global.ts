@@ -5,9 +5,10 @@ import { globalType } from "../type";
 
 const initialState: globalType = {
 	token: "",
-	userInfo: {},
-	themeColor: "#a855f7",
-	componentSize: "middle"
+	userInfo: {}, //用户信息
+	themeColor: "#a855f7", //主题
+	componentSize: "middle", //组件尺寸
+	language: "zh" //国际化
 };
 
 const globalSlice = createSlice({
@@ -22,9 +23,12 @@ const globalSlice = createSlice({
 		},
 		setComponentSize(state: globalType, { payload }: PayloadAction<SizeType>) {
 			state.componentSize = payload;
+		},
+		setLanguage(state: globalType, { payload }: PayloadAction<"zh" | "en">) {
+			state.language = payload;
 		}
 	}
 });
 
-export const { setToken, setTheme, setComponentSize } = globalSlice.actions;
+export const { setToken, setTheme, setComponentSize, setLanguage } = globalSlice.actions;
 export default globalSlice.reducer;
