@@ -12,7 +12,7 @@ import Login from "@/views/login";
 const moduleRoute = import.meta.glob("./modules/*", {
 	eager: true
 });
-const routeArray: RouteObject[] = [];
+export const routeArray: RouteObject[] = [];
 Object.keys(moduleRoute).forEach(item => {
 	Object.keys(moduleRoute[item]).forEach((key: any) => {
 		// console.log(moduleRoute[item][key])
@@ -22,6 +22,16 @@ Object.keys(moduleRoute).forEach(item => {
 });
 
 export const rootRouter: RouteObject[] = [
+	{
+		path: "/",
+		element: <Login />,
+		id: "login",
+		meta: {
+			title: "登录页",
+			key: "login",
+			requireAuth: false
+		}
+	},
 	{
 		path: "/login",
 		element: <Login />,

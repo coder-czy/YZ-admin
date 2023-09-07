@@ -1,13 +1,21 @@
 import { Layout, Menu } from "antd";
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
+import { UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
 
 import logo from "@/assets/logo.svg";
 import { useSelector } from "@/store";
+import { useNavigate } from "react-router-dom";
 
 const { Sider } = Layout;
 
 function Sidebar() {
+	// 侧边栏收缩
 	const { isCollapsed } = useSelector(state => state.sidebar);
+
+	// 点击菜单跳转页面
+	const navigate = useNavigate();
+	const menuHandle = ({ key }: { key: string }) => {
+		navigate(key);
+	};
 
 	return (
 		<Sider trigger={null} collapsible collapsed={isCollapsed}>
@@ -22,22 +30,37 @@ function Sidebar() {
 			<Menu
 				theme="dark"
 				mode="inline"
-				defaultSelectedKeys={["1"]}
+				onClick={menuHandle}
+				defaultSelectedKeys={["/dashboard/index"]}
 				items={[
 					{
-						key: "1",
+						key: "/dashboard",
 						icon: <UserOutlined />,
-						label: "nav 1"
+						label: "首页",
+						children: [
+							{
+								key: "/dashboard/index",
+								icon: <VideoCameraOutlined />,
+								label: "500"
+							}
+						]
 					},
 					{
-						key: "2",
+						key: "/err",
 						icon: <VideoCameraOutlined />,
-						label: "nav 2"
-					},
-					{
-						key: "3",
-						icon: <UploadOutlined />,
-						label: "nav 3"
+						label: "错误页",
+						children: [
+							{
+								key: "/500",
+								icon: <VideoCameraOutlined />,
+								label: "500"
+							},
+							{
+								key: "/400",
+								icon: <VideoCameraOutlined />,
+								label: "400"
+							}
+						]
 					}
 				]}
 			/>

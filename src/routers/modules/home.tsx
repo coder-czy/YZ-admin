@@ -6,7 +6,13 @@ import { RouteObject } from "../type";
 const homeRoute: RouteObject[] = [
 	{
 		element: lazyLoad(React.lazy(() => import("@/components/layouts"))),
-		path: "/home"
+		path: "/dashboard",
+		children: [
+			{
+				element: lazyLoad(React.lazy(() => import("@/views/dashboard"))),
+				path: "/dashboard/index"
+			}
+		]
 	}
 ];
 

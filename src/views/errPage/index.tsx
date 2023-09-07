@@ -12,7 +12,7 @@ type Props = {
 const ErrPage = ({ name = "400", title = "" }: Props) => {
 	const navigate = useNavigate();
 	const goHome = () => {
-		navigate("/home");
+		navigate("/dashboard/index");
 	};
 	return (
 		<div className="error flx-center">
