@@ -68,10 +68,10 @@ function Head() {
 	// 国际化切换
 	const languageItems: MenuProps["items"] = [
 		{
-			key: "zh",
+			key: "zh-cn",
 			label: <span>中文</span>,
 			onClick: () => {
-				dispatch(setLanguage("zh"));
+				dispatch(setLanguage("zh-cn"));
 			}
 		},
 		{
@@ -97,7 +97,7 @@ function Head() {
 	};
 
 	return (
-		<Header className="header flx-justify-between">
+		<Header className="header flx-justify-between bottom-shadow">
 			<Button
 				type="text"
 				icon={isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -107,6 +107,7 @@ function Head() {
 					width: 64,
 					height: 64
 				}}
+				size="large"
 			/>
 			<div className="func-box flx-center">
 				{/* <Tooltip placement="bottom" title="全屏"> */}

@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import { Spin } from "antd";
 
 /**
- * @description 加载组件是添加loading
- * @param Component 组件
+ * @description 加载组件前添加loading
+ * @param Component 需要渲染的组件
  * @returns
  */
 const lazyLoad = (Component: React.LazyExoticComponent<any>): React.ReactNode => {

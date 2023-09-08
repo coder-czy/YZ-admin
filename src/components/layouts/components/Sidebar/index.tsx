@@ -1,9 +1,9 @@
 import { Layout, Menu } from "antd";
-import { UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
+import { DashboardOutlined, BugOutlined, GlobalOutlined, SketchOutlined, ApiOutlined, SkinOutlined } from "@ant-design/icons";
 
 import logo from "@/assets/logo.svg";
 import { useSelector } from "@/store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -16,6 +16,9 @@ function Sidebar() {
 	const menuHandle = ({ key }: { key: string }) => {
 		navigate(key);
 	};
+
+	// 设置菜单选中
+	const { pathname } = useLocation();
 
 	return (
 		<Sider trigger={null} collapsible collapsed={isCollapsed}>
@@ -31,36 +34,39 @@ function Sidebar() {
 				theme="dark"
 				mode="inline"
 				onClick={menuHandle}
-				defaultSelectedKeys={["/dashboard/index"]}
+				defaultSelectedKeys={[pathname]}
 				items={[
 					{
-						key: "/dashboard",
-						icon: <UserOutlined />,
-						label: "首页",
+						key: "/dashboard/index",
+						icon: <DashboardOutlined />,
+						label: "仪表盘"
+					},
+					{
+						key: "/err",
+						icon: <BugOutlined />,
+						label: "错误页",
 						children: [
 							{
-								key: "/dashboard/index",
-								icon: <VideoCameraOutlined />,
+								key: "/404",
+								icon: <GlobalOutlined />,
+								label: "404"
+							},
+							{
+								key: "/500",
+								icon: <ApiOutlined />,
 								label: "500"
 							}
 						]
 					},
 					{
-						key: "/err",
-						icon: <VideoCameraOutlined />,
-						label: "错误页",
-						children: [
-							{
-								key: "/500",
-								icon: <VideoCameraOutlined />,
-								label: "500"
-							},
-							{
-								key: "/400",
-								icon: <VideoCameraOutlined />,
-								label: "400"
-							}
-						]
+						key: "/icon/index",
+						icon: <SketchOutlined />,
+						label: "svg图标"
+					},
+					{
+						key: "/theme/index",
+						icon: <SkinOutlined />,
+						label: "主题"
 					}
 				]}
 			/>

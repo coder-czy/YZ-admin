@@ -16,7 +16,7 @@ const Layouts: React.FC = () => {
 			<Layout>
 				{/* 头部 */}
 				<Header />
-				<Content>
+				<Content className="content-stage">
 					{/* 子路由展示区域 */}
 					<Outlet />
 				</Content>
