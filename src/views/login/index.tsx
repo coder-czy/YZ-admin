@@ -11,7 +11,7 @@ function Login() {
 	const navigate = useNavigate();
 	const onFinish = (values: any) => {
 		console.log("Received values of form: ", values);
-		navigate("home", { replace: true });
+		navigate("/dashboard/index", { replace: true });
 	};
 	const { token } = useToken();
 

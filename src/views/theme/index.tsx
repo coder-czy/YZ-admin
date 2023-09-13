@@ -215,7 +215,7 @@ const Theme: React.FC = () => {
 		<>
 			<div style={{ marginBottom: 16 }}>
 				{/* 国际化配置 */}
-				<span style={{ marginRight: 16 }}>国际化配置</span>
+				<Divider>国际化配置</Divider>
 				<Radio.Group value={locale} onChange={changeLocale}>
 					<Radio.Button key="en" value={"en"}>
 						English
@@ -226,7 +226,7 @@ const Theme: React.FC = () => {
 				</Radio.Group>
 
 				{/* 组件尺寸配置 */}
-				<span style={{ marginRight: 16 }}>组件尺寸配置</span>
+				<Divider>组件尺寸配置</Divider>
 				<Radio.Group value={compSize} onChange={sizeHandle}>
 					<Radio.Button value="small">Small</Radio.Button>
 					<Radio.Button value="middle">Middle</Radio.Button>
@@ -234,7 +234,7 @@ const Theme: React.FC = () => {
 				</Radio.Group>
 
 				{/* 主题配置 */}
-				<span style={{ marginRight: 16 }}>主题配置</span>
+				<Divider>组件尺寸配置</Divider>
 				<ColorPicker format={formatHex} showText value={themeVal} onFormatChange={setFormatHex} onChange={setColorHex} />
 			</div>
 			<Page />
