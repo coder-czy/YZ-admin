@@ -5,6 +5,7 @@ import { Layout } from "antd";
 import "./index.less";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const { Content } = Layout;
 
@@ -18,8 +19,11 @@ const Layouts: React.FC = () => {
 				<Header />
 				<Content className="content-stage">
 					{/* 子路由展示区域 */}
-					<Outlet />
+					<div className="child-stage">
+						<Outlet />
+					</div>
 				</Content>
+				<Footer></Footer>
 			</Layout>
 			{/* 主题弹窗 */}
 		</Layout>

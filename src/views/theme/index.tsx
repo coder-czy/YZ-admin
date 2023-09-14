@@ -25,7 +25,8 @@ import {
 	Image,
 	InputNumber,
 	Divider,
-	ColorPicker
+	ColorPicker,
+	Card
 } from "antd";
 
 import { useDispatch, useSelector } from "@/store";
@@ -212,7 +213,7 @@ const Theme: React.FC = () => {
 	};
 
 	return (
-		<>
+		<Card bordered={false}>
 			<div style={{ marginBottom: 16 }}>
 				{/* 国际化配置 */}
 				<Divider>国际化配置</Divider>
@@ -238,7 +239,7 @@ const Theme: React.FC = () => {
 				<ColorPicker format={formatHex} showText value={themeVal} onFormatChange={setFormatHex} onChange={setColorHex} />
 			</div>
 			<Page />
-		</>
+		</Card>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Alert, Descriptions } from "antd";
+import { Alert, Card, Descriptions } from "antd";
 
 import SvgIcon from "@/components/svgIcon";
 import type { DescriptionsProps } from "antd";
@@ -33,7 +33,7 @@ const descItems: DescriptionsProps["items"] = [
 
 function Icon() {
 	return (
-		<>
+		<Card>
 			<Alert
 				message="SVG 图标目前使用 vite-plugin-svg-icons 插件完成，官方文档请查看 ：https://github.com/vbenjs/vite-plugin-svg-icons
 "
@@ -48,7 +48,7 @@ function Icon() {
 				))}
 			</div>
 			<Descriptions title={<h1>配置项 📃</h1>} items={descItems} bordered layout="horizontal" column={1} />
-		</>
+		</Card>
 	);
 }
 

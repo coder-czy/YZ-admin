@@ -21,6 +21,8 @@
 - 动态主题
 - axios 请求封装
 - 封装 svg 图标组件
+- Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
+- husky、lint-staged、commitlint、czg、cz-git 规范提交信息
 
 ## 目录 📃
 
