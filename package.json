@@ -1,7 +1,22 @@
 {
-	"name": "yz-admin",
+	"name": "YZ-admin",
 	"private": true,
 	"version": "0.0.2",
+	"description": "YZ-admin open source management system",
+	"author": {
+		"name": "YZ-admin",
+		"email": "1131696774@qq.com",
+		"url": "https://github.com/coder-czy"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/coder-czy/YZ-admin",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:coder-czy/YZ-admin.git"
+	},
+	"bugs": {
+		"url": "https://github.com/coder-czy/YZ-admin/issues"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
@@ -68,6 +83,21 @@
 		"vite-plugin-compression": "^0.5.1",
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-plugin-svg-icons": "^2.0.1"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"browserslist": {
+		"production": [
+			"> 1%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"config": {
 		"commitizen": {

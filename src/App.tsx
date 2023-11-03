@@ -15,7 +15,7 @@ function App() {
 	const [locale, setLocal] = useState<Locale>(zhCN);
 	useEffect(() => {
 		switch (language) {
-			case "zh":
+			case "zh-cn":
 				setLocal(zhCN);
 				break;
 

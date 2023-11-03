@@ -24,6 +24,16 @@
 - Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - husky、lint-staged、commitlint、czg、cz-git 规范提交信息
 
+### 项目截图 📷
+
+- 登录页：
+
+![login](https://ooo.0x0.ooo/2023/11/03/ONKzWs.png)
+
+- 页面
+
+![page](https://ooo.0x0.ooo/2023/11/03/ONKk2B.png)
+
 ## 目录 📃
 
 ```text
@@ -95,5 +105,6 @@ pnpm preview
 
 ## 最后 🔚
 
+未完待续~ 持续更新🀄</br>
 目前还有很多不足的地方，如果你觉得有不错的想法及更好的实现欢迎提 pr，大家一起学习进步~</br>
 如果你觉得这个项目还不错，点个 star ⭐️ 支持一下 thanks~
