@@ -125,3 +125,37 @@
 .base-color {
 	color: #323232;
 }
+
+/* 循环创建margin、padding类名 */
+
+@start: 1;
+@end: 20;
+.loop-numbers(@index) when (@index =< @end) {
+	.mt-@{index} {
+		margin-top: @index * 1px;
+	}
+	.mb-@{index} {
+		margin-bottom: @index * 1px;
+	}
+	.mr-@{index} {
+		margin-right: @index * 1px;
+	}
+	.ml-@{index} {
+		margin-left: @index * 1px;
+	}
+	.pt-@{index} {
+		padding-top: @index * 1px;
+	}
+	.pb-@{index} {
+		padding-bottom: @index * 1px;
+	}
+	.pr-@{index} {
+		padding-right: @index * 1px;
+	}
+	.pl-@{index} {
+		padding-left: @index * 1px;
+	}
+
+	.loop-numbers(@index + 1);
+}
+.loop-numbers(@start);

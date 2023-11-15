@@ -29,6 +29,7 @@ specifiers:
   less: ^4.2.0
   lint-staged: 13.0.2
   postcss: ^8.4.29
+  postcss-less: ^6.0.0
   prettier: ^3.0.3
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -89,6 +90,7 @@ devDependencies:
   less: 4.2.0
   lint-staged: 13.0.2
   postcss: 8.4.29
+  postcss-less: 6.0.0_postcss@8.4.29
   prettier: 3.0.3
   standard-version: 9.5.0
   stylelint: 15.10.3
@@ -5176,6 +5178,15 @@ packages:
   /posix-character-classes/0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /postcss-less/6.0.0_postcss@8.4.29:
+    resolution: {integrity: sha512-FPX16mQLyEjLzEuuJtxA8X3ejDLNGGEG503d2YGZR5Ask1SpDN8KmZUMpzCvyalWRywAn1n1VOA5dcqfCLo5rg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      postcss: ^8.3.5
+    dependencies:
+      postcss: 8.4.29
     dev: true
 
   /postcss-prefix-selector/1.16.0_postcss@5.2.18:
