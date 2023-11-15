@@ -2,17 +2,16 @@ import { useRef } from "react";
 import { Col, Row } from "antd";
 import { RocketFilled, PropertySafetyFilled, SlackCircleFilled, SmileFilled } from "@ant-design/icons";
 
-// import echarts from "@/utils/echarts";
 import type { ECOption } from "@/utils/echarts";
-// import { useEchartsResize } from "@/hooks/useEchart";
 import "./index.less";
-import { useEcharts } from "@/hooks/useEchart";
-// import { ECharts } from "echarts";
+import { useEcharts } from "@/hooks/useEcharts";
+import ProductChart from "./components/productChart";
+import PieChart from "./components/pieChart";
+import TableComp from "./components/tableComp";
+import GaugeChart from "./components/gaugeChart";
+
 function Dashboard() {
 	const pieChart = useRef<HTMLDivElement>(null);
-	// let myChartRef = useRef<ECharts | null>(null);
-	// let myChart = useEchartsResize(myChartRef);
-
 	let option: ECOption = {
 		tooltip: {
 			trigger: "item"
@@ -57,15 +56,9 @@ function Dashboard() {
 		]
 	};
 	useEcharts(pieChart, option);
-	// useEffect(() => {
-	// 	if (myChart && !myChart.current) {
-	// 		myChart.current = echarts.init(pieChart.current) as any;
-	// 		option && myChart.current?.setOption(option);
-	// 	}
-	// }, []);
 
 	return (
-		<div>
+		<div className="dashboard">
 			{/* 仪表盘统计 */}
 			<Row gutter={20}>
 				<Col className="gutter-row" span={6}>
@@ -105,7 +98,23 @@ function Dashboard() {
 					</div>
 				</Col>
 			</Row>
-			<div style={{ width: "100%", height: "500px" }} ref={pieChart}></div>
+			{/* <div style={{ width: "100%", height: "500px" }} ref={pieChart}></div> */}
+			<div className="chart-content flx-center">
+				<div className="prod-content shadow">
+					<ProductChart />
+				</div>
+				<div className="pie-content shadow">
+					<PieChart />
+				</div>
+			</div>
+			<div className="chart-content flx-center">
+				<div className="prod-content shadow p-20">
+					<TableComp />
+				</div>
+				<div className="pie-content shadow">
+					<GaugeChart />
+				</div>
+			</div>
 		</div>
 	);
 }

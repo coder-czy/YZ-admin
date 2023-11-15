@@ -14,7 +14,7 @@ import Echarts from "@/utils/echarts";
 export const useEcharts = (echartsRef: RefObject<HTMLDivElement>, option: ECOption) => {
 	const myChart = useRef<ECharts | null>(null);
 	useEffect(() => {
-		if (myChart && !myChart.current) {
+		if (echartsRef.current && myChart && !myChart.current) {
 			// 初始化
 			myChart.current = Echarts.init(echartsRef.current) as any;
 			option && myChart.current?.setOption(option);
