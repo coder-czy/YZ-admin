@@ -22,6 +22,16 @@ function ProductChart() {
 	let yData = mockData.map(item => item.num);
 	const option: ECOption = {
 		// backgroundColor: "rgba(0,0,0,.5)",
+		title: {
+			text: "商品销售",
+			top: "5%",
+			left: "5%",
+			textStyle: {
+				color: "#323233",
+				fontSize: 18,
+				fontWeight: "normal"
+			}
+		},
 		tooltip: {
 			trigger: "axis",
 			axisPointer: {
@@ -36,7 +46,7 @@ function ProductChart() {
 				return `
         <div class='u-p-2'>
         <div class='fz-10'>日期：${v[0].axisValue}</div>
-        <div class='fz-10 u-mt-2'>人数：${v[0].value}</div>
+        <div class='fz-10 u-mt-2'>商品数量：${v[0].value}</div>
         </div>
           `;
 			}
@@ -50,7 +60,7 @@ function ProductChart() {
 			splitLine: { lineStyle: { type: "dashed", color: "rgba(255,255,255,.2)", width: 1 }, show: true }
 		},
 		yAxis: {
-			name: "人",
+			name: "商品数量",
 			type: "value",
 			scale: true,
 			nameTextStyle: { color: "rgba(255,255,255,.5)", align: "right", padding: [0, 10, 0, 0], fontSize: "100%" },

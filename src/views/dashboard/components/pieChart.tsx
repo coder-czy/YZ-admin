@@ -67,7 +67,7 @@ function PieChart() {
 		// backgroundColor: "#0A2E5D",
 		color: color,
 		title: {
-			text: "交通方式",
+			text: "运输方式",
 			top: "48%",
 			textAlign: "center",
 			left: "49%",

@@ -41,14 +41,14 @@ function GaugeChart() {
 			fontSize: 30,
 			color: "#fff",
 			fontWeight: "normal",
-			padding: [0, 0, 0, 0]
+			padding: [-190, 0, 0, 0]
 		},
 		blue: {
-			fontSize: 50,
+			fontSize: 70,
 			fontFamily: "DINBold",
 			color: "#fff",
 			fontWeight: "bold",
-			padding: [150, 0, 0, 0]
+			padding: [-200, 0, 0, 0]
 		},
 		radius: {
 			width: 200,
@@ -124,7 +124,7 @@ function GaugeChart() {
 			{
 				type: "gauge",
 				name: "外层辅助",
-				radius: "74%",
+				radius: "78%",
 				startAngle: 225,
 				endAngle: -45,
 				splitNumber: 100,
@@ -177,7 +177,7 @@ function GaugeChart() {
 			},
 			{
 				type: "gauge",
-				radius: "70%",
+				radius: "75%",
 				startAngle: 225,
 				endAngle: -45,
 				pointer: {
@@ -189,7 +189,7 @@ function GaugeChart() {
 						return "{blue|" + num + "}{white|分}" + "{size|" + "}\n{radius|系统综合评分}";
 					},
 					rich: rich,
-					offsetCenter: ["0%", "0%"]
+					offsetCenter: ["0%", "82%"]
 				},
 				data: dataArr,
 				title: {
