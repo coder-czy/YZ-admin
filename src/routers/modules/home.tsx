@@ -2,10 +2,11 @@ import React from "react";
 
 import lazyLoad from "@/components/lazyLoad";
 import { RouteObject } from "../type";
+import Layouts from "@/components/layouts";
 
 const homeRoute: RouteObject[] = [
 	{
-		element: lazyLoad(React.lazy(() => import("@/components/layouts"))),
+		element: <Layouts />,
 		path: "/dashboard",
 		children: [
 			{

@@ -2,11 +2,12 @@ import React from "react";
 
 import { RouteObject } from "../type";
 import lazyLoad from "@/components/lazyLoad";
+import Layouts from "@/components/layouts";
 
 const staticRoute: RouteObject[] = [
 	{
 		path: "/icon",
-		element: lazyLoad(React.lazy(() => import("@/components/layouts"))),
+		element: <Layouts />,
 		children: [
 			{
 				path: "/icon/index",
@@ -16,7 +17,7 @@ const staticRoute: RouteObject[] = [
 	},
 	{
 		path: "/theme",
-		element: lazyLoad(React.lazy(() => import("@/components/layouts"))),
+		element: <Layouts />,
 		children: [
 			{
 				path: "/theme/index",
