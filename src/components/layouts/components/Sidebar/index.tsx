@@ -59,6 +59,47 @@ function Sidebar() {
 						]
 					},
 					{
+						key: "/menu",
+						icon: <BugOutlined />,
+						label: "菜单",
+						children: [
+							{
+								key: "/menu1/index",
+								icon: <GlobalOutlined />,
+								label: "menu1",
+								children: [
+									{
+										key: "/menu/menu1-1/index",
+										icon: <GlobalOutlined />,
+										label: "menu1-1"
+									},
+									{
+										key: "/menu/menu1-2/index",
+										icon: <GlobalOutlined />,
+										label: "menu1-2"
+									}
+								]
+							},
+							{
+								key: "/menu2/index",
+								icon: <GlobalOutlined />,
+								label: "menu2",
+								children: [
+									{
+										key: "/menu/menu2-1/index",
+										icon: <GlobalOutlined />,
+										label: "menu2-1"
+									},
+									{
+										key: "/menu/menu2-2/index",
+										icon: <GlobalOutlined />,
+										label: "menu2-2"
+									}
+								]
+							}
+						]
+					},
+					{
 						key: "/icon/index",
 						icon: <SketchOutlined />,
 						label: "svg图标"
