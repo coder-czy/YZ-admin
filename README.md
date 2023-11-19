@@ -30,7 +30,11 @@
 
 ![login](https://ooo.0x0.ooo/2023/11/03/ONKzWs.png)
 
-- 页面
+- 仪表盘：
+
+![login](https://ooo.0x0.ooo/2023/11/18/OeXLvC.png)
+
+- 其他页面
 
 ![page](https://ooo.0x0.ooo/2023/11/03/ONKk2B.png)
 

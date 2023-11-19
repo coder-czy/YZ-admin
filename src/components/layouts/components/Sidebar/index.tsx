@@ -1,5 +1,14 @@
 import { Layout, Menu } from "antd";
-import { DashboardOutlined, BugOutlined, GlobalOutlined, SketchOutlined, ApiOutlined, SkinOutlined } from "@ant-design/icons";
+import {
+	DashboardOutlined,
+	BugOutlined,
+	GlobalOutlined,
+	SketchOutlined,
+	ApiOutlined,
+	SkinOutlined,
+	AlignLeftOutlined,
+	OrderedListOutlined
+} from "@ant-design/icons";
 
 import logo from "@/assets/logo.svg";
 import { useSelector } from "@/store";
@@ -60,39 +69,39 @@ function Sidebar() {
 					},
 					{
 						key: "/menu",
-						icon: <BugOutlined />,
+						icon: <AlignLeftOutlined />,
 						label: "菜单",
 						children: [
 							{
 								key: "/menu1/index",
-								icon: <GlobalOutlined />,
+								icon: <OrderedListOutlined />,
 								label: "menu1",
 								children: [
 									{
 										key: "/menu/menu1-1/index",
-										icon: <GlobalOutlined />,
+										icon: <OrderedListOutlined />,
 										label: "menu1-1"
 									},
 									{
 										key: "/menu/menu1-2/index",
-										icon: <GlobalOutlined />,
+										icon: <OrderedListOutlined />,
 										label: "menu1-2"
 									}
 								]
 							},
 							{
 								key: "/menu2/index",
-								icon: <GlobalOutlined />,
+								icon: <OrderedListOutlined />,
 								label: "menu2",
 								children: [
 									{
 										key: "/menu/menu2-1/index",
-										icon: <GlobalOutlined />,
+										icon: <OrderedListOutlined />,
 										label: "menu2-1"
 									},
 									{
 										key: "/menu/menu2-2/index",
-										icon: <GlobalOutlined />,
+										icon: <OrderedListOutlined />,
 										label: "menu2-2"
 									}
 								]
