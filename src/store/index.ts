@@ -19,7 +19,7 @@ const persistConfig = {
 	storage
 };
 
-// persist reducer
+// persist reducer（持久化）
 const persistReducerConfig = persistReducer(persistConfig, reducer);
 const middlewares = [reduxThunk, reduxPromise];
 
