@@ -5,19 +5,21 @@ import viteCompression from "vite-plugin-compression";
 import eslintPlugin from "vite-plugin-eslint";
 import { resolve } from "path";
 
-import { convertBoolean } from "./src/utils/getEnv";
+import { createProxy, wrapperEnv } from "./src/utils/getEnv";
 
 // https://vitejs.dev/config/
 export default defineConfig((mode: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode.mode, process.cwd());
+	const ViteEnv = wrapperEnv(env);
 
 	return {
 		// 服务配置
 		server: {
 			host: "0.0.0.0", // 服务器主机名，如果允许外部访问，可设置为"0.0.0.0"
 			port: Number(env.VITE_PORT),
-			open: convertBoolean(env.VITE_OPEN),
-			cors: true
+			open: ViteEnv.VITE_OPEN,
+			cors: true,
+			proxy: createProxy(ViteEnv.VITE_PROXY)
 		},
 
 		resolve: {
@@ -36,7 +38,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 			// * EsLint 报错信息显示在浏览器界面上
 			eslintPlugin(),
 			// * gzip compress
-			convertBoolean(env.VITE_BUILD_GZIP) &&
+			ViteEnv.VITE_BUILD_GZIP &&
 				viteCompression({
 					verbose: true,
 					disable: false,
@@ -49,7 +51,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 		css: {},
 
 		esbuild: {
-			pure: convertBoolean(env.VITE_DROP_CONSOLE) ? ["console.log", "debugger"] : []
+			pure: ViteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
 		},
 		// 打包配置
 		build: {
@@ -65,7 +67,11 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 			// 		drop_debugger: true
 			// 	}
 			// },
-
+			sourcemap: false,
+			// 禁用 gzip 压缩大小报告，可略微减少打包时间
+			reportCompressedSize: false,
+			// 规定触发警告的 chunk 大小
+			chunkSizeWarningLimit: 2000,
 			rollupOptions: {
 				output: {
 					chunkFileNames: "assets/js/[name]-[hash].js",

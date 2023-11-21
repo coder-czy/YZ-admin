@@ -38,6 +38,7 @@
 		"antd": "^5.8.4",
 		"axios": "^1.6.2",
 		"dayjs": "^1.11.9",
+		"default-passive-events": "^2.0.0",
 		"echarts": "^5.4.3",
 		"nprogress": "^0.2.0",
 		"qs": "^6.11.2",

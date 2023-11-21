@@ -10,12 +10,13 @@ import { setToken } from "@/store/module/global";
 import { AxiosCanceler } from "@/api/utils/axiosCancel";
 
 const axiosCancel = new AxiosCanceler();
+const timeout = Number(import.meta.env.VITE_TIMEOUT) || 10000;
 
 const config = {
 	//请求超时时间
-	timeout: import.meta.env.VITE_APP_HTTP_TIMEOUT || 10000,
+	timeout,
 	// 默认地址请求地址，
-	baseURL: import.meta.env.VITE_APP_HTTP_BASEURL,
+	baseURL: import.meta.env.VITE_API_URL,
 	// 跨域时候允许携带凭证
 	withCredentials: true
 };

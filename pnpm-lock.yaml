@@ -19,6 +19,7 @@ specifiers:
   commitizen: ^4.3.0
   cz-git: ^1.7.1
   dayjs: ^1.11.9
+  default-passive-events: ^2.0.0
   echarts: ^5.4.3
   eslint: ^8.45.0
   eslint-config-prettier: ^9.0.0
@@ -60,6 +61,7 @@ dependencies:
   antd: 5.8.5_biqbaboplfbrettd7655fr4n2y
   axios: 1.6.2
   dayjs: 1.11.9
+  default-passive-events: 2.0.0
   echarts: 5.4.3
   nprogress: 0.2.0
   qs: 6.11.2
@@ -2517,6 +2519,10 @@ packages:
       execa: 7.2.0
       titleize: 3.0.0
     dev: true
+
+  /default-passive-events/2.0.0:
+    resolution: {integrity: sha512-eMtt76GpDVngZQ3ocgvRcNCklUMwID1PaNbCNxfpDXuiOXttSh0HzBbda1HU9SIUsDc02vb7g9+3I5tlqe/qMQ==}
+    dev: false
 
   /defaults/1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}

@@ -36,29 +36,25 @@ function PieChart() {
 				value: trafficWay[i].value,
 				name: trafficWay[i].name,
 				itemStyle: {
-					normal: {
-						borderWidth: 5,
-						shadowBlur: 20,
-						borderColor: color[i],
-						shadowColor: color[i]
-					}
+					borderWidth: 5,
+					shadowBlur: 20,
+					borderColor: color[i],
+					shadowColor: color[i]
 				}
 			},
 			{
 				value: 2,
 				name: "",
+				label: {
+					show: false
+				},
+				labelLine: {
+					show: false
+				},
 				itemStyle: {
-					normal: {
-						label: {
-							show: false
-						},
-						labelLine: {
-							show: false
-						},
-						color: "rgba(0, 0, 0, 0)",
-						borderColor: "rgba(0, 0, 0, 0)",
-						borderWidth: 0
-					}
+					color: "rgba(0, 0, 0, 0)",
+					borderColor: "rgba(0, 0, 0, 0)",
+					borderWidth: 0
 				}
 			}
 		);
@@ -117,36 +113,32 @@ function PieChart() {
 			{
 				name: "",
 				type: "pie",
-				clockWise: false,
+				clockwise: false,
 				radius: [100, 115],
-				hoverAnimation: false,
-				itemStyle: {
-					normal: {
-						label: {
-							show: true,
-							position: "outside",
-							color: "#323233",
-							formatter: function (params: LabelFormatterCallback) {
-								let percent = "0";
-								let total = 0;
-								for (let i = 0; i < trafficWay.length; i++) {
-									total += trafficWay[i].value;
-								}
-								percent = ((params.value / total) * 100).toFixed(0);
-								if (params.name !== "") {
-									return "交通方式：" + params.name + "\n" + "\n" + "占百分比：" + percent + "%";
-								} else {
-									return "";
-								}
-							}
-						},
-						labelLine: {
-							// length: 30,
-							// length2: 100,
-							show: true,
-							color: "#323233"
+				// hoverAnimation: false,
+				label: {
+					show: true,
+					position: "outside",
+					color: "#323233",
+					formatter: function (params: LabelFormatterCallback) {
+						let percent = "0";
+						let total = 0;
+						for (let i = 0; i < trafficWay.length; i++) {
+							total += trafficWay[i].value;
+						}
+						percent = ((params.value / total) * 100).toFixed(0);
+						if (params.name !== "") {
+							return "交通方式：" + params.name + "\n" + "\n" + "占百分比：" + percent + "%";
+						} else {
+							return "";
 						}
 					}
+				},
+				labelLine: {
+					// length: 30,
+					// length2: 100,
+					show: true,
+					color: "#323233"
 				},
 				data: data
 			}

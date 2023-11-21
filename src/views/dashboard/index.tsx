@@ -67,19 +67,19 @@ function Dashboard() {
 			render: () => <RocketFilled className={`num-icon flx-center mr-12 blue`} />
 		},
 		{
-			key: "1",
+			key: "2",
 			title: "库存产品",
 			num: 20,
 			render: () => <PropertySafetyFilled className={`num-icon flx-center mr-12 yellow`} />
 		},
 		{
-			key: "1",
+			key: "3",
 			title: "打折商品",
 			num: 190,
 			render: () => <SlackCircleFilled className={`num-icon flx-center mr-12 orange`} />
 		},
 		{
-			key: "1",
+			key: "4",
 			title: "喜欢商品",
 			num: 12,
 			render: () => <SmileFilled className={`num-icon flx-center mr-12 purple`} />

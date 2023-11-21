@@ -42,6 +42,7 @@
 
 ```text
 YZ-Admin
+├─ .husky                 # 集成 husky
 ├─ .vscode                # vscode推荐配置
 ├─ public                 # 静态资源文件（忽略打包）
 ├─ src
@@ -54,6 +55,7 @@ YZ-Admin
 │  ├─ routers             # 路由管理
 │  ├─ store               # redux store
 │  ├─ style               # 全局样式
+│  ├─ typings             # 全局类型声明
 │  ├─ utils               # 工具库
 │  ├─ views               # 项目所有页面
 │  ├─ App.tsx             # 入口页面

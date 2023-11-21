@@ -81,38 +81,32 @@ function GaugeChart() {
 				center: ["50%", "50%"],
 				z: 0,
 				itemStyle: {
-					normal: {
-						color: new echarts.graphic.RadialGradient(
-							0.5,
-							0.5,
-							1,
-							[
-								{
-									offset: 0,
-									color: "rgba(17,24,43,0)"
-								},
-								{
-									offset: 0.5,
-									// color: '#1E2B57'
-									color: "rgba(28,42,91,.6)"
-								},
-								{
-									offset: 1,
-									color: "#141C33"
-									// color:'rgba(17,24,43,0)'
-								}
-							],
-							false
-						),
-						label: {
-							show: false
-						},
-						labelLine: {
-							show: false
-						}
-					}
+					color: new echarts.graphic.RadialGradient(
+						0.5,
+						0.5,
+						1,
+						[
+							{
+								offset: 0,
+								color: "rgba(17,24,43,0)"
+							},
+							{
+								offset: 0.5,
+								// color: '#1E2B57'
+								color: "rgba(28,42,91,.6)"
+							},
+							{
+								offset: 1,
+								color: "#141C33"
+								// color:'rgba(17,24,43,0)'
+							}
+						],
+						false
+					)
 				},
-				hoverAnimation: false,
+				labelLine: {
+					show: false
+				},
 				label: {
 					show: false
 				},
@@ -306,36 +300,30 @@ function GaugeChart() {
 				center: ["50%", "50%"],
 				z: 1,
 				itemStyle: {
-					normal: {
-						color: new echarts.graphic.RadialGradient(
-							0.5,
-							0.5,
-							0.8,
-							[
-								{
-									offset: 0,
-									color: "#4978EC"
-								},
-								{
-									offset: 0.5,
-									color: "#1E2B57"
-								},
-								{
-									offset: 1,
-									color: "#141F3D"
-								}
-							],
-							false
-						),
-						label: {
-							show: false
-						},
-						labelLine: {
-							show: false
-						}
-					}
+					color: new echarts.graphic.RadialGradient(
+						0.5,
+						0.5,
+						0.8,
+						[
+							{
+								offset: 0,
+								color: "#4978EC"
+							},
+							{
+								offset: 0.5,
+								color: "#1E2B57"
+							},
+							{
+								offset: 1,
+								color: "#141F3D"
+							}
+						],
+						false
+					)
 				},
-				hoverAnimation: false,
+				labelLine: {
+					show: false
+				},
 				label: {
 					show: false
 				},

@@ -4,10 +4,23 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    // 解析非相对模块名的基准目录
+    "baseUrl": "./",
+    // 模块名到基于 baseUrl的路径映射的列表。
+    "paths": {
+      "@": [
+        "src"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "vite.config.ts",
-    "src/utils/*"
+    "src/utils/*",
+    "src/typings/*"
   ]
 }
