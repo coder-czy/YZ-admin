@@ -1,11 +1,15 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from "axios";
 import { message } from "antd";
+import NProgress from "@/utils/nprogress";
 
 import { ResultData } from "@/api/type";
-// import { useDispatch, useSelector } from "@/store";
 import { ResultEnum } from "@/enums/httpEnum";
-// import { setToken } from "@/store/module/global";
 import { checkStatus } from "./utils/checkStatus";
+import { store } from "@/store";
+import { setToken } from "@/store/module/global";
+import { AxiosCanceler } from "@/api/utils/axiosCancel";
+
+const axiosCancel = new AxiosCanceler();
 
 const config = {
 	//请求超时时间
@@ -15,9 +19,6 @@ const config = {
 	// 跨域时候允许携带凭证
 	withCredentials: true
 };
-
-// const dispatch = useDispatch();
-// let { token } = useSelector(state => state.global);
 
 // 错误提示
 const [messageApi] = message.useMessage();
@@ -44,9 +45,12 @@ class RequestHttp {
 	 * @description 全局请求拦截器: token校验(JWT)
 	 */
 	private reqInterception() {
-		let token = "";
+		const { token } = store.getState().global;
 		this.service.interceptors.request.use(
 			config => {
+				// 请求加入队列
+				axiosCancel.addPending(config);
+				NProgress.start();
 				if (config.headers && typeof config.headers.set === "function") {
 					config.headers.set("Authorization", `Bearer ${token}`);
 				}
@@ -64,10 +68,13 @@ class RequestHttp {
 	private resInterception() {
 		this.service.interceptors.response.use(
 			response => {
-				const { data } = response;
+				NProgress.done();
+				const { data, config } = response;
+				// 请求完成移除队列
+				axiosCancel.removePending(config);
 				// 登录失效
 				if (data.code === ResultEnum.OVERDUE) {
-					// dispatch(setToken(""));
+					store.dispatch(setToken(""));
 					window.location.hash = "/login";
 					showMsg(data.message);
 					return Promise.reject(data);
@@ -82,6 +89,7 @@ class RequestHttp {
 				return response;
 			},
 			async (error: AxiosError) => {
+				NProgress.done();
 				// 网络超时
 				if (error.message && error.message.indexOf("timeout") !== -1) showMsg("请求超时，请稍后再试");
 				// 网络错误

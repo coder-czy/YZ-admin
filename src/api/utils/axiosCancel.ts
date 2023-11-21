@@ -1,4 +1,3 @@
-// ? 暂未使用，目前使用全局 Loading 来控制重复请求
 import { AxiosRequestConfig } from "axios";
 import qs from "qs";
 
@@ -33,6 +32,7 @@ export class AxiosCanceler {
 		// 如果在 pending 中存在当前请求标识，需要取消当前请求
 		const controller = pendingMap.get(url);
 		controller && controller.abort();
+		pendingMap.delete(url);
 	}
 
 	/**
