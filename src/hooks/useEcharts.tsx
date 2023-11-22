@@ -3,6 +3,7 @@ import { ECharts } from "echarts";
 
 import { ECOption } from "@/utils/echarts";
 import Echarts from "@/utils/echarts";
+import { debounce } from "@/utils/common";
 
 /**
  * @description 创建和初始化Echarts
@@ -20,10 +21,12 @@ export const useEcharts = (echartsRef: RefObject<HTMLDivElement>, option: ECOpti
 			option && myChart.current?.setOption(option);
 		}
 		if (myChart.current) {
-			// 监听容器变化实现自适应
-			const resizeObserver = new ResizeObserver(() => {
+			// 防抖
+			let resizeFn = debounce(() => {
 				myChart.current?.resize();
-			});
+			}, 100);
+			// 监听容器变化实现自适应
+			const resizeObserver = new ResizeObserver(resizeFn);
 			resizeObserver.observe(myChart.current?.getDom().parentElement as Element);
 			return () => {
 				resizeObserver.unobserve(myChart.current?.getDom().parentElement as Element);

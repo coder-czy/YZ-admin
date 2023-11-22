@@ -9,10 +9,10 @@ import {
 	AlignLeftOutlined,
 	OrderedListOutlined
 } from "@ant-design/icons";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "@/assets/logo.svg";
 import { useSelector } from "@/store";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -35,7 +35,7 @@ function Sidebar() {
 			{/* logo */}
 			<div className="logo">
 				<img src={logo} alt="logo" />
-				{isCollapsed ? null : <h2>YZ ADMIN</h2>}
+				<h2 style={{ display: isCollapsed ? "none" : "block" }}>YZ ADMIN</h2>
 			</div>
 
 			{/* 菜单 */}
