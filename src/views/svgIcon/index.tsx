@@ -1,8 +1,7 @@
-import { Alert, Card, Descriptions } from "antd";
+import { Alert, Card, Descriptions, Row, Col, DescriptionsProps, message } from "antd";
+import Clipboard from "clipboard";
 
 import SvgIcon from "@/components/svgIcon";
-import type { DescriptionsProps } from "antd";
-
 import "./index.less";
 
 // 拿到svg目录下的所有svg文件名
@@ -31,24 +30,41 @@ const descItems: DescriptionsProps["items"] = [
 	}
 ];
 
+const copy = new Clipboard(".copy-btn");
+
 function Icon() {
+	const [messageApi, contextHolder] = message.useMessage();
+	copy.on("success", () => {
+		// message.success("复制成功！");
+		messageApi.success("复制成功！");
+	});
+	copy.on("error", () => {
+		// message.error("复制失败！");
+		messageApi.error("复制失败！");
+	});
 	return (
-		<Card>
-			<Alert
-				message="SVG 图标目前使用 vite-plugin-svg-icons 插件完成，官方文档请查看 ：https://github.com/vbenjs/vite-plugin-svg-icons
+		<>
+			{contextHolder}
+			<Card>
+				<Alert
+					message="SVG 图标目前使用 vite-plugin-svg-icons 插件完成，官方文档请查看 ：https://github.com/vbenjs/vite-plugin-svg-icons
 "
-				type="info"
-				banner
-			/>
-			<div className="icon-stage">
-				{svgIcons.map(icon => (
-					<div className="icon-box flx-center" key={icon}>
-						<SvgIcon name={icon} iconStyle={{ width: "100%", height: "100%" }} />
-					</div>
-				))}
-			</div>
-			<Descriptions title={<h1>配置项 📃</h1>} items={descItems} bordered layout="horizontal" column={1} />
-		</Card>
+					type="info"
+					banner
+				/>
+				<Descriptions className="mt-16" title={<h1>配置项 📃</h1>} items={descItems} bordered layout="horizontal" column={1} />
+				<Row gutter={[0, 24]} className="icon-stage mt-20">
+					{svgIcons.map(icon => (
+						<Col span={4} key={icon} className="copy-btn" data-clipboard-text={`<SvgIcon name="${icon}"/>`}>
+							<div className="icon-box">
+								<SvgIcon name={icon} iconStyle={{ width: "100%", height: "100%" }} />
+								<p className="icon-name">{icon}</p>
+							</div>
+						</Col>
+					))}
+				</Row>
+			</Card>
+		</>
 	);
 }
 

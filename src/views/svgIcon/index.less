@@ -1,9 +1,22 @@
 .icon-stage {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 40px;
 	.icon-box {
-		width: 25%;
-		margin-bottom: 40px;
+		padding: 10px;
+		overflow: hidden;
+		text-align: center;
+		cursor: pointer;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		&:hover {
+			box-sizing: border-box;
+			border: 1px solid #e5e5e5;
+			& > svg {
+				transition: transform 0.3s ease-in-out;
+				transform: scale(1.2);
+			}
+		}
+	}
+	.icon-name {
+		font-size: 18px;
+		color: #323232;
 	}
 }
