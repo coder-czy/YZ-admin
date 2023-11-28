@@ -1,4 +1,5 @@
 import { Alert, Card, Descriptions, Row, Col, DescriptionsProps, message } from "antd";
+import { CopyOutlined } from "@ant-design/icons";
 import Clipboard from "clipboard";
 
 import SvgIcon from "@/components/svgIcon";
@@ -57,6 +58,7 @@ function Icon() {
 					{svgIcons.map(icon => (
 						<Col span={4} key={icon} className="copy-btn" data-clipboard-text={`<SvgIcon name="${icon}"/>`}>
 							<div className="icon-box">
+								<CopyOutlined className="copy-icon" />
 								<SvgIcon name={icon} iconStyle={{ width: "100%", height: "100%" }} />
 								<p className="icon-name">{icon}</p>
 							</div>

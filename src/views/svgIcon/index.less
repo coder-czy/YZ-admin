@@ -1,5 +1,6 @@
 .icon-stage {
 	.icon-box {
+		position: relative;
 		padding: 10px;
 		overflow: hidden;
 		text-align: center;
@@ -13,10 +14,21 @@
 				transition: transform 0.3s ease-in-out;
 				transform: scale(1.2);
 			}
+			& > .copy-icon {
+				display: block;
+			}
 		}
 	}
 	.icon-name {
 		font-size: 18px;
 		color: #323232;
+	}
+	.copy-icon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		display: none;
+		font-size: 22px;
+		color: #adadad;
 	}
 }
