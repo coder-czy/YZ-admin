@@ -1,19 +1,33 @@
 import { Form, Button, Input, theme } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { ValidateStatus } from "antd/es/form/FormItem";
 import { useNavigate } from "react-router-dom";
 
 import "./index.less";
 import LoginBg from "./component/bg";
+import { useState } from "react";
 
 const { useToken } = theme;
 
 function Login() {
 	const navigate = useNavigate();
 	const onFinish = (values: any) => {
-		console.log("Received values of form: ", values);
-		navigate("/dashboard/index", { replace: true });
+		let { username, password } = values;
+
+		username ? setUsernameStatus("") : setUsernameStatus("error");
+		password ? setPasswordStatus("") : setPasswordStatus("error");
+
+		if (username && password) navigate("/dashboard/index", { replace: true });
 	};
 	const { token } = useToken();
+
+	const loginData = {
+		username: "admin",
+		password: "123456"
+	};
+
+	const [usernameStatus, setUsernameStatus] = useState<ValidateStatus>("");
+	const [passwordStatus, setPasswordStatus] = useState<ValidateStatus>("");
 
 	return (
 		<div className="login flx-center">
@@ -27,12 +41,12 @@ function Login() {
 				}}
 			>
 				<h2 className="title">YZ ADMIN</h2>
-				<Form name="normal_login" className="login-form" initialValues={{ remember: true }} onFinish={onFinish}>
-					<Form.Item name="账号" rules={[{ required: true, message: "请输入账号!" }]}>
+				<Form name="normal_login" className="login-form" initialValues={loginData} onFinish={onFinish}>
+					<Form.Item name="username" label="账号" validateStatus={usernameStatus} help={usernameStatus ? "请输入账号!" : ""}>
 						<Input prefix={<UserOutlined className="site-form-item-icon" />} className="form-input" placeholder="账号" />
 					</Form.Item>
-					<Form.Item name="密码" rules={[{ required: true, message: "请输入密码!" }]}>
-						<Input
+					<Form.Item name="password" label="密码" validateStatus={passwordStatus} help={passwordStatus ? "请输入密码!" : ""}>
+						<Input.Password
 							prefix={<LockOutlined className="site-form-item-icon" />}
 							type="password"
 							placeholder="密码"
