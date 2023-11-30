@@ -8,7 +8,8 @@ const initialState: globalType = {
 	userInfo: {}, //用户信息
 	themeColor: "#a855f7", //主题
 	componentSize: "middle", //组件尺寸
-	language: "zh-cn" //国际化
+	language: "zh-cn", //国际化
+	grayMode: false //是否开启灰色模式
 };
 
 const globalSlice = createSlice({
@@ -26,9 +27,12 @@ const globalSlice = createSlice({
 		},
 		setLanguage(state: globalType, { payload }: PayloadAction<"zh-cn" | "en">) {
 			state.language = payload;
+		},
+		setGrayMode(state: globalType, { payload }: PayloadAction<boolean>) {
+			state.grayMode = payload;
 		}
 	}
 });
 
-export const { setToken, setTheme, setComponentSize, setLanguage } = globalSlice.actions;
+export const { setToken, setTheme, setComponentSize, setLanguage, setGrayMode } = globalSlice.actions;
 export default globalSlice.reducer;

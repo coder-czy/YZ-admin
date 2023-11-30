@@ -8,6 +8,7 @@ export interface globalType {
 	};
 	componentSize: SizeType;
 	language: "zh-cn" | "en";
+	grayMode: boolean;
 }
 export interface sidebarType {
 	isCollapsed: boolean;

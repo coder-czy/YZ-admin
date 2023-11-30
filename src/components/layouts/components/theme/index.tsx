@@ -1,9 +1,10 @@
-import { Drawer, ColorPicker, theme, Button } from "antd";
+import { Drawer, ColorPicker, theme, Button, Switch, message } from "antd";
 import type { Color, ColorPickerProps } from "antd/es/color-picker";
 import { useState, useMemo, useEffect } from "react";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
-import { useDispatch } from "@/store";
-import { setTheme } from "@/store/module/global";
+import { useDispatch, useSelector } from "@/store";
+import { setTheme, setGrayMode } from "@/store/module/global";
 
 type props = {
 	open: boolean;
@@ -32,6 +33,11 @@ const ThemeComp = (props: props) => {
 		setColorHex("#a855f7");
 	};
 
+	const { grayMode } = useSelector(state => state.global);
+	const changeGray = (checked: boolean) => {
+		dispatch(setGrayMode(checked));
+	};
+
 	return (
 		<>
 			<Drawer title="主题配置🎨" placement="right" onClose={onClose} open={open}>
@@ -44,6 +50,25 @@ const ThemeComp = (props: props) => {
 					<Button type="primary" style={{ backgroundColor: "#a855f7" }} onClick={resetTheme}>
 						重置
 					</Button>
+				</div>
+				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
+					<p className="base-color">暗黑模式：</p>
+					<Switch
+						checkedChildren={<>🌞</>}
+						unCheckedChildren={<>🌜</>}
+						onChange={() => {
+							message.success("欢迎提交 pull request ✨");
+						}}
+					/>
+				</div>
+				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
+					<p className="base-color">灰色主题：</p>
+					<Switch
+						checkedChildren={<CheckOutlined />}
+						unCheckedChildren={<CloseOutlined />}
+						onChange={changeGray}
+						defaultChecked={grayMode}
+					/>
 				</div>
 			</Drawer>
 		</>

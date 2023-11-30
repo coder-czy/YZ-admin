@@ -42,10 +42,10 @@ function Login() {
 			>
 				<h2 className="title">YZ ADMIN</h2>
 				<Form name="normal_login" className="login-form" initialValues={loginData} onFinish={onFinish}>
-					<Form.Item name="username" label="账号" validateStatus={usernameStatus} help={usernameStatus ? "请输入账号!" : ""}>
+					<Form.Item name="username" validateStatus={usernameStatus} help={usernameStatus ? "请输入账号!" : ""}>
 						<Input prefix={<UserOutlined className="site-form-item-icon" />} className="form-input" placeholder="账号" />
 					</Form.Item>
-					<Form.Item name="password" label="密码" validateStatus={passwordStatus} help={passwordStatus ? "请输入密码!" : ""}>
+					<Form.Item name="password" validateStatus={passwordStatus} help={passwordStatus ? "请输入密码!" : ""}>
 						<Input.Password
 							prefix={<LockOutlined className="site-form-item-icon" />}
 							type="password"

@@ -8,9 +8,12 @@ import zhCN from "antd/locale/zh_CN";
 
 import Router from "@/routers";
 import { RootState, useSelector } from "@/store";
+import { useTheme } from "@/hooks/useTheme";
 
 function App() {
 	const { themeColor, componentSize, language } = useSelector((state: RootState) => state.global);
+	//主题管理
+	useTheme();
 	// 国际化
 	const [locale, setLocal] = useState<Locale>(zhCN);
 	useEffect(() => {
