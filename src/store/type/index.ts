@@ -8,7 +8,8 @@ export interface globalType {
 	};
 	componentSize: SizeType;
 	language: "zh-cn" | "en";
-	grayMode: boolean;
+	themeMode: "" | "gray" | "week";
+	isDark: boolean;
 }
 export interface sidebarType {
 	isCollapsed: boolean;

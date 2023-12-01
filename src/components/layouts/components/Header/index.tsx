@@ -118,7 +118,10 @@ function Head() {
 				<Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottom" arrow>
 					{/* <Tooltip placement="left" title="国际化配置"> */}
 					<div className="flx-center">
-						<SvgIcon name="language" iconStyle={{ height: "22px", width: "22px", marginRight: "15px", cursor: "pointer" }} />
+						<SvgIcon
+							name="language"
+							iconStyle={{ height: "22px", width: "22px", marginRight: "15px", cursor: "pointer", color: "var(--yz-svg-color)" }}
+						/>
 					</div>
 					{/* </Tooltip> */}
 				</Dropdown>
@@ -140,7 +143,7 @@ function Head() {
 					/>
 				</Tooltip>
 				{/* 个人信息 */}
-				<p className="username base-color ellipsis">Yangzi</p>
+				<p className="username ellipsis">Yangzi</p>
 				<Dropdown menu={{ items }} trigger={["hover"]} placement="bottom" arrow>
 					<Avatar className="icon" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
 				</Dropdown>

@@ -10,6 +10,8 @@ import { store, persistor } from "@/store";
 import App from "./App.tsx";
 import "@/style/reset.less";
 import "@/style/common.less";
+import "@/style/dark.less";
+import "@/style/light.less";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>

@@ -1,5 +1,5 @@
 import { HashRouter } from "react-router-dom";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, theme } from "antd";
 import type { Locale } from "antd/es/locale";
 import { useState, useEffect } from "react";
 import enUS from "antd/locale/en_US";
@@ -11,7 +11,7 @@ import { RootState, useSelector } from "@/store";
 import { useTheme } from "@/hooks/useTheme";
 
 function App() {
-	const { themeColor, componentSize, language } = useSelector((state: RootState) => state.global);
+	const { themeColor, componentSize, language, isDark } = useSelector((state: RootState) => state.global);
 	//主题管理
 	useTheme();
 	// 国际化
@@ -41,7 +41,8 @@ function App() {
 				theme={{
 					token: {
 						colorPrimary: themeColor
-					}
+					},
+					algorithm: isDark ? theme.darkAlgorithm : undefined
 				}}
 			>
 				<Router />

@@ -9,7 +9,8 @@ const initialState: globalType = {
 	themeColor: "#a855f7", //主题
 	componentSize: "middle", //组件尺寸
 	language: "zh-cn", //国际化
-	grayMode: false //是否开启灰色模式
+	themeMode: "", //主题模式
+	isDark: false //暗黑模式
 };
 
 const globalSlice = createSlice({
@@ -28,11 +29,14 @@ const globalSlice = createSlice({
 		setLanguage(state: globalType, { payload }: PayloadAction<"zh-cn" | "en">) {
 			state.language = payload;
 		},
-		setGrayMode(state: globalType, { payload }: PayloadAction<boolean>) {
-			state.grayMode = payload;
+		setThemeMode(state: globalType, { payload }: PayloadAction<"" | "gray" | "week">) {
+			state.themeMode = payload;
+		},
+		setIsDark(state: globalType, { payload }: PayloadAction<boolean>) {
+			state.isDark = payload;
 		}
 	}
 });
 
-export const { setToken, setTheme, setComponentSize, setLanguage, setGrayMode } = globalSlice.actions;
+export const { setToken, setTheme, setComponentSize, setLanguage, setThemeMode, setIsDark } = globalSlice.actions;
 export default globalSlice.reducer;

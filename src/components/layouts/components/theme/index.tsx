@@ -1,10 +1,10 @@
-import { Drawer, ColorPicker, theme, Button, Switch, message } from "antd";
+import { Drawer, ColorPicker, theme, Button, Switch } from "antd";
 import type { Color, ColorPickerProps } from "antd/es/color-picker";
 import { useState, useMemo, useEffect } from "react";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "@/store";
-import { setTheme, setGrayMode } from "@/store/module/global";
+import { setIsDark, setTheme, setThemeMode } from "@/store/module/global";
 
 type props = {
 	open: boolean;
@@ -33,9 +33,9 @@ const ThemeComp = (props: props) => {
 		setColorHex("#a855f7");
 	};
 
-	const { grayMode } = useSelector(state => state.global);
-	const changeGray = (checked: boolean) => {
-		dispatch(setGrayMode(checked));
+	const { themeMode } = useSelector(state => state.global);
+	const changeTheme = (checked: boolean, mode: "" | "gray" | "week") => {
+		checked ? dispatch(setThemeMode(mode)) : dispatch(setThemeMode(""));
 	};
 
 	return (
@@ -56,18 +56,27 @@ const ThemeComp = (props: props) => {
 					<Switch
 						checkedChildren={<>🌞</>}
 						unCheckedChildren={<>🌜</>}
-						onChange={() => {
-							message.success("欢迎提交 pull request ✨");
+						onChange={checked => {
+							dispatch(setIsDark(checked));
 						}}
 					/>
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="base-color">灰色主题：</p>
+					<p className="base-color">灰色模式：</p>
 					<Switch
 						checkedChildren={<CheckOutlined />}
 						unCheckedChildren={<CloseOutlined />}
-						onChange={changeGray}
-						defaultChecked={grayMode}
+						onChange={checked => changeTheme(checked, "gray")}
+						defaultChecked={themeMode === "gray"}
+					/>
+				</div>
+				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
+					<p className="base-color">色弱模式：</p>
+					<Switch
+						checkedChildren={<CheckOutlined />}
+						unCheckedChildren={<CloseOutlined />}
+						onChange={checked => changeTheme(checked, "week")}
+						defaultChecked={themeMode === "week"}
 					/>
 				</div>
 			</Drawer>

@@ -235,7 +235,7 @@ const Theme: React.FC = () => {
 				</Radio.Group>
 
 				{/* 主题配置 */}
-				<Divider>组件尺寸配置</Divider>
+				<Divider>主题配置</Divider>
 				<ColorPicker format={formatHex} showText value={themeVal} onFormatChange={setFormatHex} onChange={setColorHex} />
 			</div>
 			<Page />
