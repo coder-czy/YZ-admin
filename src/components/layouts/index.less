@@ -1,5 +1,6 @@
 .layout {
 	height: 100%;
+	overflow: hidden;
 	.logo {
 		display: flex;
 		align-items: center;
@@ -25,6 +26,7 @@
 		z-index: 10;
 		padding: 0;
 		background-color: var(--yz-background-color);
+		border-bottom: 1px solid var(--yz-border-color);
 		.func-box {
 			padding: 0 20px;
 			.username {
@@ -38,6 +40,9 @@
 				font-size: 20px;
 				color: var(--yz-svg-color);
 				cursor: pointer;
+			}
+			.avatar {
+				color: #ffffff;
 			}
 		}
 	}

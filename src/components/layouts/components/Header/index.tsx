@@ -97,7 +97,7 @@ function Head() {
 	};
 
 	return (
-		<Header className="header flx-justify-between bottom-shadow">
+		<Header className="header flx-justify-between">
 			<Button
 				type="text"
 				icon={isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -145,7 +145,7 @@ function Head() {
 				{/* 个人信息 */}
 				<p className="username ellipsis">Yangzi</p>
 				<Dropdown menu={{ items }} trigger={["hover"]} placement="bottom" arrow>
-					<Avatar className="icon" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
+					<Avatar className="icon avatar" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
 				</Dropdown>
 			</div>
 			<ThemeComp open={open} close={close}></ThemeComp>

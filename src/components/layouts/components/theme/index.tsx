@@ -5,6 +5,7 @@ import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "@/store";
 import { setIsDark, setTheme, setThemeMode } from "@/store/module/global";
+import "./index.less";
 
 type props = {
 	open: boolean;
@@ -33,36 +34,37 @@ const ThemeComp = (props: props) => {
 		setColorHex("#a855f7");
 	};
 
-	const { themeMode } = useSelector(state => state.global);
+	const { themeMode, isDark } = useSelector(state => state.global);
 	const changeTheme = (checked: boolean, mode: "" | "gray" | "week") => {
 		checked ? dispatch(setThemeMode(mode)) : dispatch(setThemeMode(""));
 	};
 
 	return (
 		<>
-			<Drawer title="主题配置🎨" placement="right" onClose={onClose} open={open}>
+			<Drawer className="theme" title="主题配置🎨" placement="right" onClose={onClose} open={open}>
 				<div className="flx-justify-between">
-					<p className="base-color">主题颜色：</p>
+					<p className="theme-color">主题颜色：</p>
 					<ColorPicker format={formatHex} showText value={themeVal} onFormatChange={setFormatHex} onChange={setColorHex} />
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="base-color">重置主题：</p>
+					<p className="theme-color">重置主题：</p>
 					<Button type="primary" style={{ backgroundColor: "#a855f7" }} onClick={resetTheme}>
 						重置
 					</Button>
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="base-color">暗黑模式：</p>
+					<p className="theme-color">暗黑模式：</p>
 					<Switch
 						checkedChildren={<>🌞</>}
 						unCheckedChildren={<>🌜</>}
+						defaultChecked={isDark}
 						onChange={checked => {
 							dispatch(setIsDark(checked));
 						}}
 					/>
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="base-color">灰色模式：</p>
+					<p className="theme-color">灰色模式：</p>
 					<Switch
 						checkedChildren={<CheckOutlined />}
 						unCheckedChildren={<CloseOutlined />}
@@ -71,7 +73,7 @@ const ThemeComp = (props: props) => {
 					/>
 				</div>
 				<div className="flx-justify-between" style={{ marginTop: "20px" }}>
-					<p className="base-color">色弱模式：</p>
+					<p className="theme-color">色弱模式：</p>
 					<Switch
 						checkedChildren={<CheckOutlined />}
 						unCheckedChildren={<CloseOutlined />}

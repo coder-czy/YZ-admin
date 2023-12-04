@@ -5,7 +5,8 @@
 	padding: 24px 0;
 	overflow: hidden;
 	cursor: pointer;
-	background-color: #ffffff;
+	background-color: var(--yz-background-color);
+	border: 1px solid var(--yz-border-color);
 	border-radius: 8px;
 	.num-icon {
 		width: 60px;
@@ -35,12 +36,12 @@
 			display: block;
 			font-size: 20px;
 			font-weight: bold;
-			color: #323233;
+			color: var(--yz-font-color);
 		}
 		.title {
 			display: block;
 			font-size: 12px;
-			color: #666666;
+			color: var(--yz-font-color-2);
 		}
 	}
 }
@@ -51,14 +52,16 @@
 	& > div {
 		height: 100%;
 		overflow: hidden;
-		background: #ffffff;
+		background: var(--yz-background-color);
 		border-radius: 8px;
 	}
 	.pie-content {
 		width: 40%;
+		border: 1px solid var(--yz-border-color);
 	}
 	.prod-content {
 		width: 60%;
 		margin-right: 24px;
+		border: 1px solid var(--yz-border-color);
 	}
 }

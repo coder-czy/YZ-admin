@@ -93,7 +93,7 @@ function Dashboard() {
 				{topData.map(item => {
 					return (
 						<Col className="gutter-row" span={6} key={item.key}>
-							<div className="top-num shadow flx-center">
+							<div className="top-num flx-center opacity-bg">
 								{item.render()}
 								<div className="num-text">
 									<span className="num">{item.num}+</span>
@@ -107,18 +107,18 @@ function Dashboard() {
 
 			{/* <div style={{ width: "100%", height: "500px" }} ref={pieChart}></div> */}
 			<div className="chart-content flx-center">
-				<div className="prod-content shadow">
+				<div className="prod-content">
 					<ProductChart />
 				</div>
-				<div className="pie-content shadow">
+				<div className="pie-content">
 					<PieChart />
 				</div>
 			</div>
 			<div className="chart-content flx-center">
-				<div className="prod-content shadow p-20">
+				<div className="prod-content p-20">
 					<TableComp />
 				</div>
-				<div className="pie-content shadow">
+				<div className="pie-content">
 					<GaugeChart />
 				</div>
 			</div>
