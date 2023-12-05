@@ -213,7 +213,7 @@ const Theme: React.FC = () => {
 	};
 
 	return (
-		<Card bordered={false} style={{ margin: "16px 0" }}>
+		<Card style={{ margin: "16px 0" }}>
 			<div style={{ marginBottom: 16 }}>
 				{/* 国际化配置 */}
 				<Divider>国际化配置</Divider>

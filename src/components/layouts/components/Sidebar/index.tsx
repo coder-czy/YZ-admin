@@ -13,6 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "@/assets/logo.svg";
 import { useSelector } from "@/store";
+import "./index.less";
 
 const { Sider } = Layout;
 
@@ -31,7 +32,6 @@ function Sidebar() {
 
 	return (
 		<Sider trigger={null} collapsible collapsed={isCollapsed}>
-			<div className="demo-logo-vertical" />
 			{/* logo */}
 			<div className="logo">
 				<img src={logo} alt="logo" />
@@ -40,7 +40,7 @@ function Sidebar() {
 
 			{/* 菜单 */}
 			<Menu
-				theme="dark"
+				theme="light"
 				mode="inline"
 				onClick={menuHandle}
 				defaultSelectedKeys={[pathname]}
