@@ -11,6 +11,7 @@ import { createProxy, wrapperEnv } from "./src/utils/getEnv";
 export default defineConfig((mode: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode.mode, process.cwd());
 	const ViteEnv = wrapperEnv(env);
+	console.log(createProxy(ViteEnv.VITE_PROXY));
 
 	return {
 		// 服务配置

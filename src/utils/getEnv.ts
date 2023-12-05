@@ -14,9 +14,10 @@ export const createProxy = (proxy: proxyList = []) => {
 		const httpsRE = /^https:\/\//;
 		const isHttps = httpsRE.test(target);
 		result[prefix] = {
+			target: target,
 			changeOrigin: true,
 			ws: true,
-			rewrite: path => path.replace(new RegExp(`^${prefix}`), "/"),
+			rewrite: path => path.replace(new RegExp(`^${prefix}`), ""),
 			...(isHttps ? { secure: false } : {})
 		};
 	}

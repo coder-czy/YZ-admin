@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout, Button, Tooltip, Dropdown, Avatar, theme } from "antd";
+import { Layout, Button, Tooltip, Dropdown, Avatar, theme, Modal } from "antd";
 import type { MenuProps } from "antd";
 import { MenuUnfoldOutlined, SkinOutlined, MenuFoldOutlined, UserOutlined, FontSizeOutlined } from "@ant-design/icons";
 
@@ -37,7 +37,7 @@ function Head() {
 			key: "4",
 			label: <span>退出登录</span>,
 			onClick: () => {
-				navigate("/login", { replace: true });
+				setIsModalOpen(true);
 			}
 		}
 	];
@@ -96,60 +96,84 @@ function Head() {
 		dispatch(updateCollapsed(!isCollapsed));
 	};
 
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	// 弹框
+	const handleOk = () => {
+		navigate("/login", { replace: true });
+	};
+
+	const handleCancel = () => {
+		setIsModalOpen(false);
+	};
+
 	return (
-		<Header className="header flx-justify-between">
-			<Button
-				type="text"
-				icon={isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-				onClick={collapsedFn}
-				style={{
-					fontSize: "16px",
-					width: 64,
-					height: 64
-				}}
-				size="large"
-			/>
-			<div className="func-box flx-center">
-				{/* <Tooltip placement="bottom" title="全屏"> */}
-				<FullScreen />
-				{/* </Tooltip> */}
+		<>
+			{/* 弹框 */}
+			<Modal title="温馨提示" cancelText="取消" okText="确定" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+				<p>您是否确认退出登录?</p>
+			</Modal>
 
-				{/* 国际化配置 */}
-				<Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottom" arrow>
-					{/* <Tooltip placement="left" title="国际化配置"> */}
-					<div className="flx-center">
-						<SvgIcon
-							name="language"
-							iconStyle={{ height: "22px", width: "22px", marginRight: "15px", cursor: "pointer", color: "var(--yz-svg-color)" }}
+			<Header className="header flx-justify-between">
+				<Button
+					type="text"
+					icon={isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+					onClick={collapsedFn}
+					style={{
+						fontSize: "16px",
+						width: 64,
+						height: 64
+					}}
+					size="large"
+				/>
+				<div className="func-box flx-center">
+					{/* <Tooltip placement="bottom" title="全屏"> */}
+					<FullScreen />
+					{/* </Tooltip> */}
+
+					{/* 国际化配置 */}
+					<Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottom" arrow>
+						{/* <Tooltip placement="left" title="国际化配置"> */}
+						<div className="flx-center">
+							<SvgIcon
+								name="language"
+								iconStyle={{
+									height: "22px",
+									width: "22px",
+									marginRight: "15px",
+									cursor: "pointer",
+									color: "var(--yz-svg-color)"
+								}}
+							/>
+						</div>
+						{/* </Tooltip> */}
+					</Dropdown>
+
+					{/* 组件大小 */}
+					<Dropdown menu={{ items: compItems }} trigger={["hover"]} placement="bottom" arrow>
+						{/* <Tooltip placement="left" title="组件尺寸配置"> */}
+						<FontSizeOutlined className="icon" />
+						{/* </Tooltip> */}
+					</Dropdown>
+
+					{/* 主题配置 */}
+					<Tooltip placement="bottom" title="主题配置">
+						<SkinOutlined
+							className="icon"
+							onClick={() => {
+								setOpen(true);
+							}}
 						/>
-					</div>
-					{/* </Tooltip> */}
-				</Dropdown>
-
-				{/* 组件大小 */}
-				<Dropdown menu={{ items: compItems }} trigger={["hover"]} placement="bottom" arrow>
-					{/* <Tooltip placement="left" title="组件尺寸配置"> */}
-					<FontSizeOutlined className="icon" />
-					{/* </Tooltip> */}
-				</Dropdown>
-
-				{/* 主题配置 */}
-				<Tooltip placement="bottom" title="主题配置">
-					<SkinOutlined
-						className="icon"
-						onClick={() => {
-							setOpen(true);
-						}}
-					/>
-				</Tooltip>
-				{/* 个人信息 */}
-				<p className="username ellipsis">Yangzi</p>
-				<Dropdown menu={{ items }} trigger={["hover"]} placement="bottom" arrow>
-					<Avatar className="icon avatar" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
-				</Dropdown>
-			</div>
-			<ThemeComp open={open} close={close}></ThemeComp>
-		</Header>
+					</Tooltip>
+					{/* 个人信息 */}
+					<p className="username ellipsis">Yangzi</p>
+					<Dropdown menu={{ items }} trigger={["hover"]} placement="bottom" arrow>
+						<Avatar className="icon avatar" style={{ backgroundColor: token.colorPrimary }} icon={<UserOutlined />} />
+					</Dropdown>
+				</div>
+				<ThemeComp open={open} close={close}></ThemeComp>
+			</Header>
+		</>
 	);
 }
 

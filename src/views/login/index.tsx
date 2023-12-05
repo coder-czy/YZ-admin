@@ -1,4 +1,4 @@
-import { Form, Button, Input, theme } from "antd";
+import { Form, Button, Input, theme, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { ValidateStatus } from "antd/es/form/FormItem";
 import { useNavigate } from "react-router-dom";
@@ -6,18 +6,32 @@ import { useNavigate } from "react-router-dom";
 import "./index.less";
 import LoginBg from "./component/bg";
 import { useState } from "react";
+import { login } from "@/api/modules/login";
+import { LoginSpace } from "@/api/type";
+import { getTimeState } from "@/utils/common";
 
 const { useToken } = theme;
 
 function Login() {
 	const navigate = useNavigate();
-	const onFinish = (values: any) => {
+	const onFinish = async (values: LoginSpace.reqLogin) => {
 		let { username, password } = values;
-
+		// 输入框校验
 		username ? setUsernameStatus("") : setUsernameStatus("error");
 		password ? setPasswordStatus("") : setPasswordStatus("error");
 
-		if (username && password) navigate("/dashboard/index", { replace: true });
+		// 登录
+		if (username && password) {
+			await login({ username, password });
+			notification.success({
+				message: getTimeState(),
+				description: "登录成功",
+				placement: "topRight",
+				duration: 3
+			});
+			// 跳转首页
+			navigate("/dashboard/index", { replace: true });
+		}
 	};
 	const { token } = useToken();
 

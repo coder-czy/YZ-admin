@@ -21,15 +21,6 @@ const config = {
 	withCredentials: true
 };
 
-// 错误提示
-const [messageApi] = message.useMessage();
-const showMsg = (content: string) => {
-	messageApi.open({
-		type: "error",
-		content
-	});
-};
-
 class RequestHttp {
 	service: AxiosInstance;
 	constructor(config: AxiosRequestConfig) {
@@ -77,13 +68,13 @@ class RequestHttp {
 				if (data.code === ResultEnum.OVERDUE) {
 					store.dispatch(setToken(""));
 					window.location.hash = "/login";
-					showMsg(data.message);
+					message.success(data.message);
 					return Promise.reject(data);
 				}
 
 				// 全局错误信息拦截
 				if (data.code && data.code !== ResultEnum.SUCCESS) {
-					showMsg(data.message);
+					message.error(data.message);
 					return Promise.reject(data);
 				}
 				// 请求成功
@@ -92,9 +83,9 @@ class RequestHttp {
 			async (error: AxiosError) => {
 				NProgress.done();
 				// 网络超时
-				if (error.message && error.message.indexOf("timeout") !== -1) showMsg("请求超时，请稍后再试");
+				if (error.message && error.message.indexOf("timeout") !== -1) message.error("请求超时，请稍后再试");
 				// 网络错误
-				if (error.message && error.message.indexOf("Network Error") !== -1) showMsg("网络错误，请稍后再试");
+				if (error.message && error.message.indexOf("Network Error") !== -1) message.error("网络错误，请稍后再试");
 				const { response } = error;
 				// 根据服务器响应的错误状态码，做不同的处理
 				if (response) checkStatus(response.status);
