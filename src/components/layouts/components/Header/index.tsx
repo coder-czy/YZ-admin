@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Layout, Button, Tooltip, Dropdown, Avatar, theme, Modal } from "antd";
 import type { MenuProps } from "antd";
 import { MenuUnfoldOutlined, SkinOutlined, MenuFoldOutlined, UserOutlined, FontSizeOutlined } from "@ant-design/icons";
+import { SizeType } from "antd/es/config-provider/SizeContext";
 
 import { useDispatch, useSelector } from "@/store";
 import { updateCollapsed } from "@/store/module/sidebar";
@@ -17,6 +18,7 @@ function Head() {
 	const dispatch = useDispatch();
 	const { token } = theme.useToken();
 	const navigate = useNavigate();
+	const { componentSize, language } = useSelector(state => state.global);
 	const items: MenuProps["items"] = [
 		{
 			key: "1",
@@ -42,33 +44,23 @@ function Head() {
 		}
 	];
 	// 组件大小切换
-	const compItems: MenuProps["items"] = [
-		{
-			key: "small",
-			label: <span>small</span>,
+	const sizeItem = ["small", "middle", "large"];
+	const compItems: MenuProps["items"] = sizeItem.map(item => {
+		return {
+			key: item,
+			label: <span>{item}</span>,
+			disabled: componentSize === item,
 			onClick: () => {
-				dispatch(setComponentSize("small"));
+				dispatch(setComponentSize(item as SizeType));
 			}
-		},
-		{
-			key: "middle",
-			label: <span>middle</span>,
-			onClick: () => {
-				dispatch(setComponentSize("middle"));
-			}
-		},
-		{
-			key: "large",
-			label: <span>large</span>,
-			onClick: () => {
-				dispatch(setComponentSize("large"));
-			}
-		}
-	];
+		};
+	});
+
 	// 国际化切换
 	const languageItems: MenuProps["items"] = [
 		{
 			key: "zh-cn",
+			disabled: language === "zh-cn",
 			label: <span>中文</span>,
 			onClick: () => {
 				dispatch(setLanguage("zh-cn"));
@@ -76,6 +68,7 @@ function Head() {
 		},
 		{
 			key: "en",
+			disabled: language === "en",
 			label: <span>英文</span>,
 			onClick: () => {
 				dispatch(setLanguage("en"));
