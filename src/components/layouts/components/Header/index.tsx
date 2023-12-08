@@ -2,7 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout, Button, Tooltip, Dropdown, Avatar, theme, Modal } from "antd";
 import type { MenuProps } from "antd";
-import { MenuUnfoldOutlined, SkinOutlined, MenuFoldOutlined, UserOutlined, FontSizeOutlined } from "@ant-design/icons";
+import {
+	MenuUnfoldOutlined,
+	SkinOutlined,
+	MenuFoldOutlined,
+	UserOutlined,
+	FontSizeOutlined,
+	HomeOutlined,
+	KeyOutlined,
+	LogoutOutlined
+} from "@ant-design/icons";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 
 import { useDispatch, useSelector } from "@/store";
@@ -22,22 +31,42 @@ function Head() {
 	const items: MenuProps["items"] = [
 		{
 			key: "1",
-			label: <span>首页</span>
+			label: (
+				<span>
+					<HomeOutlined className="mr-4" />
+					首页
+				</span>
+			)
 		},
 		{
 			key: "2",
-			label: <span>个人信息</span>
+			label: (
+				<span>
+					<UserOutlined className="mr-4" />
+					个人信息
+				</span>
+			)
 		},
 		{
 			key: "3",
-			label: <span>修改密码</span>
+			label: (
+				<span>
+					<KeyOutlined className="mr-4" />
+					修改密码
+				</span>
+			)
 		},
 		{
 			type: "divider"
 		},
 		{
 			key: "4",
-			label: <span>退出登录</span>,
+			label: (
+				<span>
+					<LogoutOutlined className="mr-4" />
+					退出登录
+				</span>
+			),
 			onClick: () => {
 				setIsModalOpen(true);
 			}
