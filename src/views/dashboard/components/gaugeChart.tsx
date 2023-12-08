@@ -68,7 +68,7 @@ function GaugeChart() {
 		}
 	};
 	const option: ECOption = {
-		// backgroundColor: "#0E1327",
+		backgroundColor: "transparent",
 		tooltip: {
 			formatter: "{a} <br/>{b} : {c}%"
 		},

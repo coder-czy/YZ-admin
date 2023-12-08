@@ -21,13 +21,13 @@ function ProductChart() {
 	let xData = mockData.map(item => item.time);
 	let yData = mockData.map(item => item.num);
 	const option: ECOption = {
-		// backgroundColor: "rgba(0,0,0,.5)",
+		backgroundColor: "transparent",
 		title: {
 			text: "商品销售",
 			top: "5%",
 			left: "5%",
 			textStyle: {
-				color: "#323233",
+				// color: "#323233",
 				fontSize: 18,
 				fontWeight: "normal"
 			}
@@ -56,18 +56,19 @@ function ProductChart() {
 			boundaryGap: false, // 两边留白
 			// axisLabel: { textStyle: { color: '#fff', fontSize:14}},
 			data: xData,
-			axisLine: { lineStyle: { color: "#000", width: 1 } },
-			splitLine: { lineStyle: { type: "dashed", color: "rgba(255,255,255,.2)", width: 1 }, show: true }
+			axisTick: { show: false }
+			// splitLine: { show: false }
 		},
 		yAxis: {
-			name: "商品数量",
+			// name: "商品数量",
 			type: "value",
 			scale: true,
-			nameTextStyle: { color: "rgba(255,255,255,.5)", align: "right", padding: [0, 10, 0, 0], fontSize: "100%" },
+			// nameTextStyle: { color: "rgba(255,255,255,.5)", align: "right", padding: [0, 10, 0, 0], fontSize: "100%" },
 			// axisLabel: { textStyle: { color: '#fff', fontSize: '100%' }, margin: 8 },
-			axisLine: { lineStyle: { color: "#000", width: 1 } },
-			splitLine: { lineStyle: { type: "solid", color: "rgba(255,255,255,.2)", width: 1 }, show: true }
+			// axisLine: { lineStyle: { color: "#000", width: 1 } },
+			splitLine: { show: true }
 		},
+
 		series: {
 			name: "",
 			type: "line",

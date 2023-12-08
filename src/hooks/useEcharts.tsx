@@ -4,6 +4,7 @@ import { ECharts } from "echarts";
 import { ECOption } from "@/utils/echarts";
 import Echarts from "@/utils/echarts";
 import { debounce } from "@/utils/common";
+import { useSelector } from "@/store";
 
 /**
  * @description 创建和初始化Echarts
@@ -14,10 +15,21 @@ import { debounce } from "@/utils/common";
 
 export const useEcharts = (echartsRef: RefObject<HTMLDivElement>, option: ECOption) => {
 	const myChart = useRef<ECharts | null>(null);
+	const { isDark } = useSelector(state => state.global);
+	let mode = isDark ? "dark" : "light";
+	// 切换暗黑模式重新渲染
+	useEffect(() => {
+		if (myChart.current) {
+			myChart.current.dispose();
+			myChart.current = Echarts.init(echartsRef.current, mode) as any;
+			option && myChart.current?.setOption(option);
+		}
+	}, [isDark]);
+
 	useEffect(() => {
 		if (echartsRef.current && myChart && !myChart.current) {
 			// 初始化
-			myChart.current = Echarts.init(echartsRef.current) as any;
+			myChart.current = Echarts.init(echartsRef.current, mode) as any;
 			option && myChart.current?.setOption(option);
 		}
 		if (myChart.current) {

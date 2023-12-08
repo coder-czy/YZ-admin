@@ -60,7 +60,7 @@ function PieChart() {
 		);
 	}
 	const option: ECOption = {
-		// backgroundColor: "#0A2E5D",
+		backgroundColor: "transparent",
 		color: color,
 		title: {
 			text: "运输方式",
@@ -68,7 +68,7 @@ function PieChart() {
 			textAlign: "center",
 			left: "49%",
 			textStyle: {
-				color: "#323233",
+				// color: "#323233",
 				fontSize: 22,
 				fontWeight: "lighter"
 			}
@@ -102,7 +102,7 @@ function PieChart() {
 			data: ["火车", "飞机", "客车", "轮渡"],
 			bottom: "10%",
 			textStyle: {
-				color: "#323233"
+				// color: "#323233"
 			},
 			itemGap: 20
 		},
@@ -119,7 +119,7 @@ function PieChart() {
 				label: {
 					show: true,
 					position: "outside",
-					color: "#323233",
+					// color: "#323233",
 					formatter: function (params: LabelFormatterCallback) {
 						let percent = "0";
 						let total = 0;
@@ -137,8 +137,8 @@ function PieChart() {
 				labelLine: {
 					// length: 30,
 					// length2: 100,
-					show: true,
-					color: "#323233"
+					show: true
+					// color: "#323233"
 				},
 				data: data
 			}
