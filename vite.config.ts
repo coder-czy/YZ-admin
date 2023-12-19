@@ -26,7 +26,8 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 			// 路径别名
 			alias: {
 				"@": resolve(__dirname, "./src")
-			}
+			},
+			extensions: [".mjs", ".js", ".ts", ".tsx", ".json"]
 		},
 		// 插件配置
 		plugins: [
