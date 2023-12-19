@@ -11,7 +11,6 @@ import { createProxy, wrapperEnv } from "./src/utils/getEnv";
 export default defineConfig((mode: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode.mode, process.cwd());
 	const ViteEnv = wrapperEnv(env);
-	console.log(createProxy(ViteEnv.VITE_PROXY));
 
 	return {
 		// 服务配置
@@ -55,6 +54,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 			pure: ViteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
 		},
 		// 打包配置
+		base: "./",
 		build: {
 			assetsDir: resolve(__dirname, "./public"),
 			outDir: "dist",

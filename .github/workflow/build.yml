@@ -1,0 +1,31 @@
+# 工作流名称
+name: Auto Build
+
+# 从工作流生成的工作流运行的名称，如果省略，则使用提交时的commit信息
+run-name: Deploy by @${{ github.actor }}
+
+# 触发条件
+on:
+  push:
+    branches:
+      - master
+
+# 工作流的步骤
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: install and build
+        run: |
+          npm install
+          npm run build
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true

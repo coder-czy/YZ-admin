@@ -19,9 +19,9 @@ const Layouts: React.FC = () => {
 				<Header />
 				<Content className="content-stage">
 					{/* 子路由展示区域 */}
-					<div className="child-stage">
-						<Outlet />
-					</div>
+					{/* <div className="child-stage"> */}
+					<Outlet />
+					{/* </div> */}
 				</Content>
 				<Footer></Footer>
 			</Layout>

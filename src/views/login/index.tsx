@@ -1,4 +1,4 @@
-import { Form, Button, Input, theme, notification } from "antd";
+import { Form, Button, Input, theme, notification, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { ValidateStatus } from "antd/es/form/FormItem";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +9,15 @@ import { useState } from "react";
 import { login } from "@/api/modules/login";
 import { LoginSpace } from "@/api/type";
 import { getTimeState } from "@/utils/common";
+import { useDispatch } from "@/store";
+import { ResultEnum } from "@/enums/httpEnum";
+import { setToken } from "@/store/module/global";
 
 const { useToken } = theme;
 
 function Login() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const onFinish = async (values: LoginSpace.reqLogin) => {
 		let { username, password } = values;
 		// 输入框校验
@@ -22,15 +26,21 @@ function Login() {
 
 		// 登录
 		if (username && password) {
-			await login({ username, password });
-			notification.success({
-				message: getTimeState(),
-				description: "登录成功",
-				placement: "topRight",
-				duration: 3
-			});
-			// 跳转首页
-			navigate("/dashboard/index", { replace: true });
+			const { data } = await login({ username, password });
+			if (data.code === ResultEnum.SUCCESS) {
+				//储存token
+				dispatch(setToken(data.data.token));
+				notification.success({
+					message: getTimeState(),
+					description: "登录成功",
+					placement: "topRight",
+					duration: 3
+				});
+				// 跳转首页
+				navigate("/dashboard/index", { replace: true });
+			} else {
+				message.error(data.msg);
+			}
 		}
 	};
 	const { token } = useToken();
