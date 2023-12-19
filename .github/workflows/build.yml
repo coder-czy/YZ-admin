@@ -35,7 +35,7 @@ jobs:
       - name: Get pnpm store directory
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_EN
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
       # 使用pnpm缓存可以减少安装时间
       - uses: actions/cache@v3
