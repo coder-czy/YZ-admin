@@ -48,8 +48,8 @@ jobs:
       # 安装依赖
       - name: Install dependencies and build
         run: |
-          npm install
-          npm run build:prod
+          pnpm install
+          pnpm run build:prod
 
       # 部署到gh-pages分支
       - name: deploy
