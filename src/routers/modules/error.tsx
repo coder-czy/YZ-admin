@@ -1,7 +1,7 @@
 import React from "react";
 
 import lazyLoad from "@/components/lazyLoad";
-import { RouteObject } from "@routers/type";
+import { RouteObject } from "../type";
 
 const errorRoute: RouteObject[] = [
 	{

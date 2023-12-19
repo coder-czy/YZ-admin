@@ -5,6 +5,8 @@ import React from "react";
 import { RouteObject } from "@/routers/type";
 import lazyLoad from "@/components/lazyLoad";
 import Login from "@/views/login";
+// 懒加载组件
+// const Login = lazy(() => import('../views/login'))
 
 // 导入其他模块路由
 const moduleRoute = import.meta.glob("./modules/*", {

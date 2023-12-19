@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RouteObject } from "@routers/type";
+import { RouteObject } from "../type";
 import lazyLoad from "@/components/lazyLoad";
 import Layouts from "@/components/layouts";
 

@@ -25,10 +25,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 		resolve: {
 			// 路径别名
 			alias: {
-				"@": resolve(__dirname, "./src"),
-				"@components": resolve(__dirname, "./src/components"),
-				"@routers": resolve(__dirname, "./src/routers"),
-				"@store": resolve(__dirname, "./src/store")
+				"@": resolve(__dirname, "./src")
 			}
 		},
 		// 插件配置

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { sidebarType } from "@store/type";
+import { sidebarType } from "../type";
 
 const initialState: sidebarType = {
 	isCollapsed: true
