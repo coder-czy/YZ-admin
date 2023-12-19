@@ -21,16 +21,16 @@
     // 模块名到基于 baseUrl的路径映射的列表。
     "paths": {
       "@/*": [
-        "./src/*"
+        "src/*"
       ],
       "@routers/*": [
-        "./src/routers/*"
+        "src/routers/*"
       ],
       "@components/*": [
-        "./src/components/*"
+        "src/components/*"
       ],
       "@store/*": [
-        "./src/store/*"
+        "src/store/*"
       ],
     },
     /* Linting */
