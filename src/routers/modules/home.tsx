@@ -1,7 +1,7 @@
 import React from "react";
 
 import lazyLoad from "@/components/lazyLoad";
-import { RouteObject } from "../type";
+import { RouteObject } from "@/routers/type";
 import Layouts from "@/components/layouts";
 
 const homeRoute: RouteObject[] = [

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 
-import { globalType } from "../type";
+import { globalType } from "@/store/type";
 
 const initialState: globalType = {
 	token: "",
