@@ -69,8 +69,8 @@ jobs:
         # 如果没有命中缓存才执行 npm install
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
-          npm install
-          pnpm run build:prod
+          npm install --legacy-peer-deps
+          npm run build:prod
 
       # 部署到gh-pages分支
       - name: deploy
