@@ -28,49 +28,49 @@ jobs:
         with:
           node-version: 16
 
-      # # 安装pnpm
-      # - uses: pnpm/action-setup@v2
-      #   name: Install pnpm
-      #   with:
-      #     version: 7
-      #     run_install: false
+      # 安装pnpm
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 7
+          run_install: false
 
-      # - name: Get pnpm store directory
-      #   shell: bash
-      #   run: |
-      #     echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # # 使用pnpm缓存可以减少安装时间
-      # - name: Setup pnpm cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ env.STORE_PATH }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
-      # # 安装依赖
-      # - name: Install dependencies and build
-      #   run: |
-      #     pnpm install
-      #     pnpm run build:prod
-
-      # 如果你的依赖是使用npm的，用这种
-      # 缓存 npm node_modules
-      - name: Cache dependencies
+      # 使用pnpm缓存可以减少安装时间
+      - name: Setup pnpm cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-npm-cache-
-
-      # 安装依赖 npm
-      - name: Install dependencies
-        # 如果没有命中缓存才执行 npm install
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+            ${{ runner.os }}-pnpm-store-
+      # 安装依赖
+      - name: Install dependencies and build
         run: |
-          npm install --legacy-peer-deps
-          npm run build:prod
+          pnpm install
+          pnpm run build:prod
+
+      # # 如果你的依赖是使用npm的，用这种
+      # # 缓存 npm node_modules
+      # - name: Cache dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-npm-cache-
+
+      # # 安装依赖 npm
+      # - name: Install dependencies
+      #   # 如果没有命中缓存才执行 npm install
+      #   if: steps.cache-deps.outputs.cache-hit != 'true'
+      #   run: |
+      #     npm install --legacy-peer-deps
+      #     npm run build:prod
 
       # 部署到gh-pages分支
       - name: deploy
