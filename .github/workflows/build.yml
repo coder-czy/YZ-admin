@@ -15,40 +15,61 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      # clone 该仓库的源码到工作流中
+      - name: Clone Code
+        uses: actions/checkout@v3
         with:
-          persist-credentials: false
+          # persist-credentials: false
+          # "最近更新时间"等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
       # 安装node
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      # 安装pnpm
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 7
-          run_install: false
+      # # 安装pnpm
+      # - uses: pnpm/action-setup@v2
+      #   name: Install pnpm
+      #   with:
+      #     version: 7
+      #     run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      # - name: Get pnpm store directory
+      #   shell: bash
+      #   run: |
+      #     echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # 使用pnpm缓存可以减少安装时间
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      # # 使用pnpm缓存可以减少安装时间
+      # - name: Setup pnpm cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ${{ env.STORE_PATH }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
+      # # 安装依赖
+      # - name: Install dependencies and build
+      #   run: |
+      #     pnpm install
+      #     pnpm run build:prod
+
+      # 如果你的依赖是使用npm的，用这种
+      # 缓存 npm node_modules
+      - name: Cache dependencies
+        uses: actions/cache@v3
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      # 安装依赖
-      - name: Install dependencies and build
+            ${{ runner.os }}-npm-cache-
+
+      # 安装依赖 npm
+      - name: Install dependencies
+        # 如果没有命中缓存才执行 npm install
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
-          pnpm install
+          npm install
           pnpm run build:prod
 
       # 部署到gh-pages分支
