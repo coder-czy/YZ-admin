@@ -17,8 +17,8 @@ import { SizeType } from "antd/es/config-provider/SizeContext";
 import { useDispatch, useSelector } from "@/store";
 import { updateCollapsed } from "@/store/module/sidebar";
 import { setComponentSize, setLanguage } from "@/store/module/global";
-import ThemeComp from "../theme/index";
-import FullScreen from "../fullScreen/index";
+import ThemeComp from "@/components/layouts/components/theme";
+import FullScreen from "@/components/layouts/components/fullScreen";
 import SvgIcon from "@/components/svgIcon";
 
 const { Header } = Layout;
