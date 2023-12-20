@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 
 import "./index.less";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Sidebar from "./components/sidebar";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 const { Content } = Layout;
 

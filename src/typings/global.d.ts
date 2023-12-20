@@ -16,8 +16,3 @@ declare interface ViteEnv {
 	VITE_PROXY: [string, string][];
 	VITE_BUILD_GZIP: boolean;
 }
-
-declare module "*.tsx" {
-	import { FC } from "react";
-	export default FC;
-}
