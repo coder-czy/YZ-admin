@@ -32,7 +32,7 @@
     "forceConsistentCasingInFileNames": false
   },
   "include": [
-    "src"
+    "src/**/*"
   ],
   "references": [
     {
