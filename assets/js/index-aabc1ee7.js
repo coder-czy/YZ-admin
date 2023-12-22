@@ -1,1 +1,0 @@
-import{j as e}from"./index-86934c54.js";import{B as t}from"./index-be2730d9.js";import{C as r}from"./index-733b84e9.js";function s(){return e.jsx(t.Ribbon,{text:"menu2-2",children:e.jsx(r,{title:"嵌套菜单",size:"default",children:"Menu2-2"})})}export{s as default};
