@@ -2,7 +2,15 @@
 
 ## 介绍 💥
 
-一个基于 React18、vite4、router6 后台管理模板，旨在让开发者快速搭建后台管理系统，不需要进行基础搭建便可以进行业务功能开发
+一个基于 React18、Vite4、react-router6 后台管理模板，旨在让开发者快速搭建后台管理系统，不需要进行基础搭建便可以进行业务功能开发
+
+## 在线预览 👀
+
+- https://coder-czy.github.io/YZ-admin/
+
+## 代码仓库 ⭐
+
+- https://github.com/coder-czy/YZ-admin.git
 
 ## 技术栈 🔥🔥
 
@@ -18,7 +26,7 @@
 
 - 数据持久化存储
 - 路由鉴权
-- 动态主题
+- 动态主题、暗黑模式、灰色模式、色弱模式
 - axios 请求封装
 - 封装 svg 图标组件
 - Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
@@ -28,20 +36,25 @@
 
 - 登录页：
 
-![login](https://ooo.0x0.ooo/2023/11/03/ONKzWs.png)
+![login](https://ooo.0x0.ooo/2023/12/21/OKAPUX.gif)
 
 - 仪表盘：
 
 ![login](https://ooo.0x0.ooo/2023/11/18/OeXLvC.png)
 
+- 仪表盘(暗黑模式)：
+
+![login](https://ooo.0x0.ooo/2023/12/21/OKARyt.png)
+
 - 其他页面
 
-![page](https://ooo.0x0.ooo/2023/11/03/ONKk2B.png)
+![page](https://ooo.0x0.ooo/2023/12/21/OKAtsx.png)
 
 ## 目录 📃
 
 ```text
 YZ-Admin
+├─ .github                # github仓库配置文件
 ├─ .husky                 # 集成 husky
 ├─ .vscode                # vscode推荐配置
 ├─ public                 # 静态资源文件（忽略打包）
